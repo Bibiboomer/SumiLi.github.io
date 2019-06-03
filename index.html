@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #03030c;
+            margin: unset;
+        }
+        a{ 
+            text-decoration:none; 
+            color:rgb(85, 26, 139);
+        }
+        .home-canvas {
+            position: fixed;
+            top:0;left:0;right:0;
+        }
+        #home {
+            position: relative;
+            margin: 0 20px;
+        }
+        #home > .header {
+            font-family: fantasy;
+            font-size: 28px;
+            font-weight: 800;
+            color: rgb(85, 26, 139);
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+    </style>
+    <style src="./css/indexs.styl"></style>
+</head>
+<body>
+    <div class="home-canvas">
+    </div>
+    <div id="home">
+        <div class="header">
+            <a>SUMI LI</a>
+            <a href="/archives">BLOG</a>
+        </div>
+		<!-- <a href="http://threejs.org" target="_blank" rel="noopener">three.js</a> - webgl particle billboards example -->
+    </div>
+    <script src="./js/libs/three.js"></script>
+    <script src="./js/libs/stats.min.js"></script>
+    <script src="./js/libs/tween.min.js"></script>
+	<script src="./js/loaders/OBJLoader.js"></script>
+    <script>
+        //  初始化场景
+        let scene = new THREE.Scene();
+        //  初始化相机
+        let camera = new THREE.PerspectiveCamera(105, window.innerWidth / window.innerHeight, 10, 10000);
+        camera.position.z = 200;
+
+        // renderer 的承载容器
+        let box = document.getElementsByClassName('home-canvas')[0],
+        container = document.createElement('div');
+        box.appendChild(container);
+
+        //  初始化renderer
+		let renderer = new THREE.WebGLRenderer();
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        container.appendChild(renderer.domElement);// renderer.domElement获取生成的canvas对象，追加到dom中
+        // renderer.setClearColor(0x1125aa, 1)
+
+        // 天空粒子
+        let skyParticlesGeometry;
+
+        // 切换的对象数组
+        let glist = [];
+
+        // 当前点阵模型index
+        var objIndex = -1;
+
+        function generateSprite() {
+            var canvas = document.createElement('canvas');
+            canvas.width = 16;
+            canvas.height = 16;
+            var context = canvas.getContext('2d');
+            // 依次：x1,y1,r1内圆坐标及半径，x2,y2,r2外圆坐标及半径
+            // var gradient = context.arc(8,8,8,0,2 * Math.PI);
+            var gradient = context.createRadialGradient(canvas.width / 2, canvas.height / 2, 0, canvas.width / 2, canvas.height / 2, canvas.width / 2);
+            gradient.addColorStop(0, 'rgba(255,255,255,1)');
+            gradient.addColorStop(0.2, 'rgba(255,255,255,1)');
+            gradient.addColorStop(0.4, 'rgba(0,0,255,1)');
+            gradient.addColorStop(1, 'rgba(0,0,0,1)');
+
+            context.fillStyle = gradient;
+            context.shadowColor = 'white';
+            context.shadowBlur = 10;
+            context.fillRect(0, 0, canvas.width, canvas.height);
+
+            var texture = new THREE.Texture(canvas);
+            texture.needsUpdate = true;
+            return texture;
+        }
+
+        function onWindowResize() {
+            console.log('窗口大小变化')
+            camera.aspect = window.innerWidth / window.innerHeight; // 重设横纵比
+            // 修改PerspectiveCamera实例的参数之后需要调用updateProjectionMatrix，更新相机投影矩阵
+			camera.updateProjectionMatrix(); 
+			renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+        function onDocumentMouseWheel() {
+			camera.position.z += event.deltaY;
+        }
+        function createSkyParticle () {
+            skyParticlesGeometry = new THREE.Geometry()
+			//初始变换点组
+			for (let i = 0; i < 10000; i++) {
+				var vertex = new THREE.Vector3(); // 创建点
+				vertex.x = 800 * Math.random() - 400;
+				vertex.y = 800 * Math.random() - 400;
+				vertex.z = 800 * Math.random() - 400;
+				skyParticlesGeometry.vertices.push(vertex);//几何体里面有个vertices变量，可以用来存放点
+                skyParticlesGeometry.colors.push(new THREE.Color(1, 1, 1));
+            }
+            let material = new THREE.PointsMaterial({
+                color: 0xffffff,
+                size: 1,
+                opacity: 0.6,
+                transparent: true,
+                blending: THREE.AdditiveBlending,
+                depthTest: false,
+                map: generateSprite()
+            })
+			skyParticles = new THREE.Points(skyParticlesGeometry, material);
+            scene.add(skyParticles);
+        }
+        function updateSkyParticle() {
+            skyParticlesGeometry.rotateX(-(Math.PI / 1000))
+        }
+        function init () {
+            window.addEventListener('resize', onWindowResize, false)
+            document.addEventListener("mousewheel", onDocumentMouseWheel, false)
+            document.addEventListener("keydown", onDocumentKeyDown, false);
+        }
+        async  function loadObject() {
+            let OBJloader = new THREE.OBJLoader()
+            await OBJloader.load('./3d-obj/cat.obj', (loadedMesh) => {
+                let loadGeometry = loadedMesh.children[0].geometry.attributes.position
+                let geometry = new THREE.Geometry()
+                console.log('loadGeometry.count',loadGeometry.count)
+                for (let i = 0; i < loadGeometry.count; i++) {
+                    let vertex = new THREE.Vector3(); // 创建点
+                    vertex.x = loadGeometry.getX(i) / 5
+                    vertex.y = loadGeometry.getY(i) / 5
+                    vertex.z = loadGeometry.getZ(i) / 5
+                    geometry.vertices.push(vertex);//几何体里面有个vertices变量，可以用来存放点
+                    geometry.colors.push(new THREE.Color(1, 1, 1));
+                }
+                geometry.center()
+                geometry.scale(2, 2, 2)
+
+                // let material = new THREE.PointsMaterial({
+                //     color: 0xffffff,
+                //     size: 1,
+                //     opacity: 0.6,
+                //     transparent: true,
+                //     blending: THREE.AdditiveBlending,
+                //     depthTest: false,
+                //     map: generateSprite()
+                // })
+                glist.push(geometry)
+                // let mesh = new THREE.Points(geometry, material)
+                // scene.add(mesh);
+            }) 
+            await OBJloader.load('./3d-obj/pig.obj', (loadedMesh) => {
+                let loadGeometry = loadedMesh.children[0].geometry.attributes.position
+                let geometry = new THREE.Geometry()
+                console.log('loadGeometry.count',loadGeometry.count)
+                for (let i = 0; i < loadGeometry.count; i+=15) {
+                    let vertex = new THREE.Vector3(); // 创建点
+                    vertex.x = loadGeometry.getX(i) / 5
+                    vertex.y = loadGeometry.getY(i) / 5
+                    vertex.z = loadGeometry.getZ(i) / 5
+                    geometry.vertices.push(vertex);//几何体里面有个vertices变量，可以用来存放点
+                    geometry.colors.push(new THREE.Color(1, 1, 1));
+                }
+                geometry.center()
+                console.log('geometry',geometry)
+                geometry.scale(1000, 1000, 1000)
+                geometry.rotateX(Math.PI/2)
+                geometry.rotateY(Math.PI - Math.PI/2 + Math.PI/6)
+                geometry.rotateZ(Math.PI)
+                // let material = new THREE.PointsMaterial({
+                //     color: 0xffffff,
+                //     size: 1,
+                //     opacity: 0.6,
+                //     transparent: true,
+                //     blending: THREE.AdditiveBlending,
+                //     depthTest: false,
+                //     map: generateSprite()
+                // })
+                glist.push(geometry)
+                // let mesh = new THREE.Points(geometry, material)
+                // scene.add(mesh);
+            }) 
+        }
+
+        function tweenObj(index) {
+            // geometry为初始化时的粒子大于所有的obj中的模型的粒子数
+            console.log('glist',glist)
+            console.log('TWEEN',TWEEN)
+            console.log('skyParticlesGeometry',skyParticlesGeometry)
+            console.log('index',index)
+			skyParticlesGeometry.vertices.forEach(function (e, i, arr) {
+                // debugger
+                // 获取当前模型切换粒子的长度：初始index=0
+                var length = glist[index].vertices.length;
+                
+                // glist只记录粒子位置，不参与动画
+
+                // 关键：理解初始化的粒子数必须大于所有模型粒子数
+                // 当i 小于 length时， i % length = length * 0 + i
+                // 当i 大于 length时， i % length = length * xxx + 0，1，2 .... 所以又重头开始了
+                var o = glist[index].vertices[i % length];
+				new TWEEN.Tween(e).to({
+					x: o.x,
+					y: o.y,
+					z: o.z
+                }, 1000).easing(TWEEN.Easing.Exponential.In).delay(1000 * Math.random()).start();
+			})
+			camera.position.z = 200;
+        }
+        function onDocumentKeyDown(event) {
+			if (event.which == 40 && objIndex < 2) {
+				objIndex++;
+				tweenObj(objIndex);
+				flag = true;
+			} else if (event.which == 38 && objIndex > 0) {
+				objIndex--;
+				tweenObj(objIndex);
+				flag = true;
+			}
+		}
+        createSkyParticle()
+        loadObject()
+        init()
+        animate()
+
+
+        function animate(time) {
+			requestAnimationFrame(animate);
+            render();
+		}
+
+        function render() {
+            TWEEN.update()
+            skyParticlesGeometry.verticesNeedUpdate = true;
+			skyParticlesGeometry.colorsNeedUpdate = true;
+			renderer.render(scene, camera);
+        }
+
+    </script>
+</body>
+</html>
