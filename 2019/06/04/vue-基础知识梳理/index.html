@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="最近半年接触的项目基本都是围绕着vue，趁此机会梳理下vue的基本概念，为8月份的跳槽做准备，fighting！ 渐进式框架vue涵盖以下所有模块，其中声明式渲染以及组件系统是vue核心库所包含的内容，而客户端路由、状态管理以及构建工具都有专门的解决方案。这些方案相互独立，vue运行在核心的基础上任意选用其他的组件，不一定需要全部应用   vue的MVVM模式的理解 vue借用了mvvm的设计实现">
+<meta name="keywords" content="vue,面试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue-基础知识梳理">
+<meta property="og:url" content="http://yoursite.com/2019/06/04/vue-基础知识梳理/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="最近半年接触的项目基本都是围绕着vue，趁此机会梳理下vue的基本概念，为8月份的跳槽做准备，fighting！ 渐进式框架vue涵盖以下所有模块，其中声明式渲染以及组件系统是vue核心库所包含的内容，而客户端路由、状态管理以及构建工具都有专门的解决方案。这些方案相互独立，vue运行在核心的基础上任意选用其他的组件，不一定需要全部应用   vue的MVVM模式的理解 vue借用了mvvm的设计实现">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/06/04/vue-基础知识梳理/img/20190604/渐进式框架.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/06/04/vue-基础知识梳理/img/20190604/mvvm.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/06/04/vue-基础知识梳理/img/20190604/双向绑定02.png">
+<meta property="og:updated_time" content="2019-06-12T06:48:30.248Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue-基础知识梳理">
+<meta name="twitter:description" content="最近半年接触的项目基本都是围绕着vue，趁此机会梳理下vue的基本概念，为8月份的跳槽做准备，fighting！ 渐进式框架vue涵盖以下所有模块，其中声明式渲染以及组件系统是vue核心库所包含的内容，而客户端路由、状态管理以及构建工具都有专门的解决方案。这些方案相互独立，vue运行在核心的基础上任意选用其他的组件，不一定需要全部应用   vue的MVVM模式的理解 vue借用了mvvm的设计实现">
+<meta name="twitter:image" content="http://yoursite.com/2019/06/04/vue-基础知识梳理/img/20190604/渐进式框架.jpg">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019/06/04/vue-基础知识梳理/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>vue-基础知识梳理 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/04/vue-基础知识梳理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="sumi Li">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">vue-基础知识梳理
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-06-04 10:21:48" itemprop="dateCreated datePublished" datetime="2019-06-04T10:21:48+08:00">2019-06-04</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-06-12 14:48:30" itemprop="dateModified" datetime="2019-06-12T14:48:30+08:00">2019-06-12</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/vue/" itemprop="url" rel="index"><span itemprop="name">vue</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>最近半年接触的项目基本都是围绕着vue，趁此机会梳理下vue的基本概念，为8月份的跳槽做准备，fighting！</p>
+<h2 id="渐进式框架"><a href="#渐进式框架" class="headerlink" title="渐进式框架"></a>渐进式框架</h2><p style="font-size:14px;font-family:'Helvetica Neue, Arial'"><br>vue涵盖以下所有模块，其中声明式渲染以及组件系统是vue核心库所包含的内容，而客户端路由、状态管理以及构建工具都有专门的解决方案。这些方案相互独立，vue运行在核心的基础上任意选用其他的组件，不一定需要全部应用<br><img src="./img/20190604/渐进式框架.jpg"><br></p>
+
+<hr>
+<h2 id="vue的MVVM模式的理解"><a href="#vue的MVVM模式的理解" class="headerlink" title="vue的MVVM模式的理解"></a>vue的MVVM模式的理解</h2><blockquote>
+<p>vue借用了mvvm的设计实现双向绑定，同时需要借助表单元素</p>
+</blockquote>
+<p style="font-size:14px;font-family:'Helvetica Neue, Arial'"><br><img src="./img/20190604/mvvm.jpg"><br><span style="display:block;text-indent:2em">MVVM是一种基于前端开发的架构模式，包含三个模块：数据层modle、视图层view以及viewmodel业务逻辑层。核心功能便是提供View和ViewModle的双向数据绑定，<i style="color:#42b983">ViewModle可以理解为:for当前view的model。</i>通过ViemModel连接View和Model，简化了界面与业务的依赖，解决了数据频繁更新。当modle变化时，ViewModel会自动更新；而ViewModle变化时，View也会变化。</span><br><span style="display:block;text-indent:2em">vue的双向绑定参考了MVVM模式，利用Object.defineProperty()以及发布-订阅者模式实现双向绑定，理解defineProperty的作用与观察者模式的原理，对于vue的双向绑定掌握轻而易举：</span><br><span style="display:block;text-indent:2em"><br>（1）vue在初始化data选项时会遍历每个属性，利用Object.defineProperty()将他们转为getter/setter，使vue能过追踪依赖，在属性被访问和修改时通知变化。</span><br><span style="display:block;text-indent:2em"><br>（2）同时，Vue的指令编译器Compile对元素节点进行扫描和解析，初始化视图，并根据指令模板订阅Wather更新视图替换数据并将自己添加到Dep,并且绑定对于对应的回调函数【针对指令事件】。</span><br><span style="display:block;text-indent:2em"><br>（3）在数据改变时，触发Observer中的setter,调用dep的notify,Dep遍历所有的订阅者Watcher,并调用对应的upate函数，订阅者收到通知对视图进行更新。</span><br><br></p><br><img src="./img/20190604/双向绑定02.png"><br><p style="font-size:14px;font-family:'Helvetica Neue, Arial'"><br>根据以上图示结合实例代码，深入理解：<br><br>1:实现一个Observer,对数据对象进行监听，触发getter时即初始化时添加订阅者，触发setter获取最新值，并调用notify通知所有遍历者调用自身的update进行更新，<br></p><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">// obj：data对象  vm: vue实例</span><br><span class="line">function observer(data, vm) &#123;</span><br><span class="line">    Object.keys(data).forEach(function(key) &#123;</span><br><span class="line">        defineReactive.(vm, key, data[key])</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line">function defineReactive(obj, key, val) &#123; </span><br><span class="line">    let dep = new Dep()  </span><br><span class="line">    Object.defineProperty(obj, key, &#123;</span><br><span class="line">        set: function (newVal) &#123;</span><br><span class="line">            if(newVal === val) return;</span><br><span class="line">            //  获取最新值</span><br><span class="line">            val = newVal;</span><br><span class="line">            //  发布通知</span><br><span class="line">            dep.notify()</span><br><span class="line">        &#125;,</span><br><span class="line">        get: function () &#123;</span><br><span class="line">            //  编译/初始化时</span><br><span class="line">            if(Dep.target) dep.addSub(Dep.target);</span><br><span class="line">            return val</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><br><p style="font-size:14px;font-family:'Helvetica Neue, Arial'">以上实现了对数据的监听，接下来便是如何将数据变化通知到订阅者。借用观察者模式，建立一个主题对象Dep，维护一个数组即所有订阅者,可添加删除订阅者，并发送通知。当数据发送变化时，调用notify通知订阅者进行更新<br></p>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function Dep () &#123;</span><br><span class="line">    this.subs = []</span><br><span class="line">&#125;</span><br><span class="line">Dep.prototype = &#123;</span><br><span class="line">    addSub: function(sub)&#123;</span><br><span class="line">        this.subs.push(sub)</span><br><span class="line">    &#125;,</span><br><span class="line">    notify: function () &#123;</span><br><span class="line">        this.subs.forEach(function(sub)&#123;</span><br><span class="line">            sub.update()</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p style="font-size:14px;font-family:'Helvetica Neue, Arial'">接着，便是添加订阅者，怎么添加订阅者。观察上面代码，发现Dep实例在defineReactive函数中被创建。因此可以考虑在get中调用addSub添加订阅者<br></p><br><p style="font-size:14px;font-family:'Helvetica Neue, Arial'">2:实现一个Complier，解析模板指令，将模板中的变量替换为数据，初始化视图；并为指令绑定对应更新函数，添加监听数据的订阅者<br></p>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">function compile() &#123;</span><br><span class="line">    let reg = /\&#123;\&#123;(.*)\&#125;\&#125;/;</span><br><span class="line">    //  节点元素</span><br><span class="line">    if (node.nodeType === 1) &#123;</span><br><span class="line">        let attr = node.attributes;</span><br><span class="line">        for (var i = 0; i &lt; attr.length; i++) &#123;</span><br><span class="line">            if (attr[i].nodeName == &apos;v-model&apos;) &#123;</span><br><span class="line">                var name = attr[i].nodeValue; </span><br><span class="line">                node.addEventListener(&apos;input&apos;, function (e) &#123;</span><br><span class="line">                    // 触发该属性的set方法</span><br><span class="line">                    vm[name] = e.target.value;</span><br><span class="line">                &#125;);</span><br><span class="line">                node.value = vm[name]; // 将data的值赋给该node</span><br><span class="line">                node.removeAttribute(&apos;v-model&apos;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    // 节点类型为text</span><br><span class="line">    if (node.nodeType === 3) &#123;</span><br><span class="line">        if (reg.test(node.nodeValue)) &#123;</span><br><span class="line">            // 获取匹配到的字符串</span><br><span class="line">            var name = RegExp.$1; </span><br><span class="line">            name = name.trim();</span><br><span class="line">            new Watcher(vm, node, name);  </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function nodeToFragment (node, vm) &#123;</span><br><span class="line">    // 创建文档碎片容器-虚拟容器，在dom操作较多时，此API性能优化明显</span><br><span class="line">    var flag = document.createDocumentFragment();</span><br><span class="line">    var child;</span><br><span class="line">    while (child = node.firstChild) &#123;</span><br><span class="line">        compile(child, vm);</span><br><span class="line">        flag.append(child); // 将子节点劫持到文档片段中</span><br><span class="line">    &#125;</span><br><span class="line">    return flag;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p style="font-size:14px;font-family:'Helvetica Neue, Arial'"><br>3:实现一个watcher,作为Observer与Compile的桥梁，订阅并收到每个属性变动的通知，以及执行指令绑定的回调函数，从而更新视图：<br><br></p>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// 订阅者：拥有更新方法</span><br><span class="line">function Watcher (vm, node, name) &#123;</span><br><span class="line">    Dep.target = this; // Watcher  </span><br><span class="line">    this.name = name;  // 变量</span><br><span class="line">    this.node = node;  // 变量所在的节点</span><br><span class="line">    this.vm = vm;</span><br><span class="line">    // 出发getter，实现自身实例化时往属性订阅器(dep)里面添加自己</span><br><span class="line">    this.update()</span><br><span class="line">    Dep.target = null;</span><br><span class="line">&#125;</span><br><span class="line">Watcher.prototype = &#123;</span><br><span class="line">    update: function () &#123;</span><br><span class="line">        // this.vm[this.name]触发getter,将自己添加到消息订阅器中Dep</span><br><span class="line">        this.node.nodeValue = this.vm[this.name];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p style="font-size:14px;font-family:'Helvetica Neue, Arial'">MVVM构造函数,传入vue选项对象，调用Observer劫持数据进行监听，并调用解析器compiler解析vue模板，最后更新为dom即视图<br></p>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function MVVM(options) &#123;</span><br><span class="line">    this.data = options.data</span><br><span class="line">    let data = this.data</span><br><span class="line">    observer(data, this)</span><br><span class="line">    let id = options.el</span><br><span class="line">    let dom = nodeToFragment(document.getElementById(id), this)</span><br><span class="line">    // 编译完成后，将dom返回到app中</span><br><span class="line">    document.getElementById(id).appendChild(dom); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="vue的虚拟dom理解"><a href="#vue的虚拟dom理解" class="headerlink" title="vue的虚拟dom理解"></a>vue的虚拟dom理解</h2><p style="font-size:14px;font-family:'Helvetica Neue, Arial';"> <span style="display:block;text-indent:2em">前端的任务抽象化主要包含两大工作：<i style="color:#42b983">维护状态[model]、更新视图[view]。</i><br>状态以及视图的更新都需要对dom进行操作；mvvm通过ViewModel将视图和状态进行绑定，避免对dom的直接操作，提高开发效率；然而对dom的操作仍然存在，导致了执行效率的降低。在这种场景下，一种兼顾开发效率与执行效率的方案显得尤为重要：<em style="color:#42b983">虚拟dom</em>。<br><br></span><br><span style="display:block;text-indent:2em">虚拟dom</span><br></p><p><br><br>## vue的双向绑定原理<br></p><p style="font-size:14px;font-family:'Helvetica Neue, Arial'">根据官网最新文档说明，vue并没有完全遵循mvvm模型，但vue的许多设计参考了这一模型。vue中<br></p><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">事实上</span><br></pre></td></tr></table></figure><br><br>## 总结<br><p style="font-size:14px;font-family:'Helvetica Neue, Arial'">不难发现，vue的一些基本设计理念并非仅仅该框架所有，同理react也采用了虚拟dom的设计来提高执行效率。目前前端的主流观点：dom应尽可能是一个函数式到状态的映射<br></p>
+
+<h2 id="参考🔗"><a href="#参考🔗" class="headerlink" title="参考🔗"></a>参考🔗</h2><p><a href="https://www.kancloud.cn/dataoedu/vue/327305" target="_blank" rel="noopener">MVVM模式</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/vue/" rel="tag"># vue</a>
+          
+            <a href="/tags/面试/" rel="tag"># 面试</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/14/canvas/canvas02/" rel="next" title="canvas基础系列-三角函数(2)">
+                <i class="fa fa-chevron-left"></i> canvas基础系列-三角函数(2)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/05/test/" rel="prev" title>
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">sumi Li</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#渐进式框架"><span class="nav-number">1.</span> <span class="nav-text">渐进式框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vue的MVVM模式的理解"><span class="nav-number">2.</span> <span class="nav-text">vue的MVVM模式的理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vue的虚拟dom理解"><span class="nav-number">3.</span> <span class="nav-text">vue的虚拟dom理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考🔗"><span class="nav-number">4.</span> <span class="nav-text">参考🔗</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">sumi Li</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.1"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
