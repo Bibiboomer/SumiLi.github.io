@@ -97,21 +97,21 @@
 
 
   <meta name="description" content="最近半年接触的项目基本都是围绕着vue，趁此机会梳理下vue的基本概念，为8月份的跳槽做准备，fighting！ 渐进式框架vue涵盖以下所有模块，其中声明式渲染以及组件系统是vue核心库所包含的内容，而客户端路由、状态管理以及构建工具都有专门的解决方案。这些方案相互独立，vue运行在核心的基础上任意选用其他的组件，不一定需要全部应用   vue的MVVM模式的理解 vue借用了mvvm的设计实现">
-<meta name="keywords" content="vue,面试">
+<meta name="keywords" content="面试,vue">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue-基础概念">
 <meta property="og:url" content="http://yoursite.com/2019/06/04/vue/vue-基础概念/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="最近半年接触的项目基本都是围绕着vue，趁此机会梳理下vue的基本概念，为8月份的跳槽做准备，fighting！ 渐进式框架vue涵盖以下所有模块，其中声明式渲染以及组件系统是vue核心库所包含的内容，而客户端路由、状态管理以及构建工具都有专门的解决方案。这些方案相互独立，vue运行在核心的基础上任意选用其他的组件，不一定需要全部应用   vue的MVVM模式的理解 vue借用了mvvm的设计实现">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/2019/06/04/vue/vue-基础概念/img/渐进式框架.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/06/04/vue/vue-基础概念/img/mvvm.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/06/04/vue/vue-基础概念/img/双向绑定02.png">
+<meta property="og:image" content="http://yoursite.com/.com//渐进式框架.jpg">
+<meta property="og:image" content="http://yoursite.com/.com//mvvm.jpg">
+<meta property="og:image" content="http://yoursite.com/.com//双向绑定02.png">
 <meta property="og:updated_time" content="2019-06-12T07:20:09.602Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue-基础概念">
 <meta name="twitter:description" content="最近半年接触的项目基本都是围绕着vue，趁此机会梳理下vue的基本概念，为8月份的跳槽做准备，fighting！ 渐进式框架vue涵盖以下所有模块，其中声明式渲染以及组件系统是vue核心库所包含的内容，而客户端路由、状态管理以及构建工具都有专门的解决方案。这些方案相互独立，vue运行在核心的基础上任意选用其他的组件，不一定需要全部应用   vue的MVVM模式的理解 vue借用了mvvm的设计实现">
-<meta name="twitter:image" content="http://yoursite.com/2019/06/04/vue/vue-基础概念/img/渐进式框架.jpg">
+<meta name="twitter:image" content="http://yoursite.com/.com//渐进式框架.jpg">
 
 
 
@@ -458,13 +458,13 @@
 
       
         <p>最近半年接触的项目基本都是围绕着vue，趁此机会梳理下vue的基本概念，为8月份的跳槽做准备，fighting！</p>
-<h2 id="渐进式框架"><a href="#渐进式框架" class="headerlink" title="渐进式框架"></a>渐进式框架</h2><p style="font-size:14px;font-family:'Helvetica Neue, Arial'"><br>vue涵盖以下所有模块，其中声明式渲染以及组件系统是vue核心库所包含的内容，而客户端路由、状态管理以及构建工具都有专门的解决方案。这些方案相互独立，vue运行在核心的基础上任意选用其他的组件，不一定需要全部应用<br><img src="./img/渐进式框架.jpg"><br></p>
+<h2 id="渐进式框架"><a href="#渐进式框架" class="headerlink" title="渐进式框架"></a>渐进式框架</h2><p style="font-size:14px;font-family:'Helvetica Neue, Arial'"><br>vue涵盖以下所有模块，其中声明式渲染以及组件系统是vue核心库所包含的内容，而客户端路由、状态管理以及构建工具都有专门的解决方案。这些方案相互独立，vue运行在核心的基础上任意选用其他的组件，不一定需要全部应用<br><img src="/.com//渐进式框架.jpg"><br></p>
 
 <hr>
 <h2 id="vue的MVVM模式的理解"><a href="#vue的MVVM模式的理解" class="headerlink" title="vue的MVVM模式的理解"></a>vue的MVVM模式的理解</h2><blockquote>
 <p>vue借用了mvvm的设计实现双向绑定，同时需要借助表单元素</p>
 </blockquote>
-<p style="font-size:14px;font-family:'Helvetica Neue, Arial'"><br><img src="./img/mvvm.jpg"><br><span style="display:block;text-indent:2em">MVVM是一种基于前端开发的架构模式，包含三个模块：数据层modle、视图层view以及viewmodel业务逻辑层。核心功能便是提供View和ViewModle的双向数据绑定，<i style="color:#42b983">ViewModle可以理解为:for当前view的model。</i>通过ViemModel连接View和Model，简化了界面与业务的依赖，解决了数据频繁更新。当modle变化时，ViewModel会自动更新；而ViewModle变化时，View也会变化。</span><br><span style="display:block;text-indent:2em">vue的双向绑定参考了MVVM模式，利用Object.defineProperty()以及发布-订阅者模式实现双向绑定，理解defineProperty的作用与观察者模式的原理，对于vue的双向绑定掌握轻而易举：</span><br><span style="display:block;text-indent:2em"><br>（1）vue在初始化data选项时会遍历每个属性，利用Object.defineProperty()将他们转为getter/setter，使vue能过追踪依赖，在属性被访问和修改时通知变化。</span><br><span style="display:block;text-indent:2em"><br>（2）同时，Vue的指令编译器Compile对元素节点进行扫描和解析，初始化视图，并根据指令模板订阅Wather更新视图替换数据并将自己添加到Dep,并且绑定对于对应的回调函数【针对指令事件】。</span><br><span style="display:block;text-indent:2em"><br>（3）在数据改变时，触发Observer中的setter,调用dep的notify,Dep遍历所有的订阅者Watcher,并调用对应的upate函数，订阅者收到通知对视图进行更新。</span><br><br></p><br><img src="./img/双向绑定02.png"><br><p style="font-size:14px;font-family:'Helvetica Neue, Arial'"><br>根据以上图示结合实例代码，深入理解：<br><br>1:实现一个Observer,对数据对象进行监听，触发getter时即初始化时添加订阅者，触发setter获取最新值，并调用notify通知所有遍历者调用自身的update进行更新，<br></p><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">// obj：data对象  vm: vue实例</span><br><span class="line">function observer(data, vm) &#123;</span><br><span class="line">    Object.keys(data).forEach(function(key) &#123;</span><br><span class="line">        defineReactive.(vm, key, data[key])</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line">function defineReactive(obj, key, val) &#123; </span><br><span class="line">    let dep = new Dep()  </span><br><span class="line">    Object.defineProperty(obj, key, &#123;</span><br><span class="line">        set: function (newVal) &#123;</span><br><span class="line">            if(newVal === val) return;</span><br><span class="line">            //  获取最新值</span><br><span class="line">            val = newVal;</span><br><span class="line">            //  发布通知</span><br><span class="line">            dep.notify()</span><br><span class="line">        &#125;,</span><br><span class="line">        get: function () &#123;</span><br><span class="line">            //  编译/初始化时</span><br><span class="line">            if(Dep.target) dep.addSub(Dep.target);</span><br><span class="line">            return val</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><br><p style="font-size:14px;font-family:'Helvetica Neue, Arial'">以上实现了对数据的监听，接下来便是如何将数据变化通知到订阅者。借用观察者模式，建立一个主题对象Dep，维护一个数组即所有订阅者,可添加删除订阅者，并发送通知。当数据发送变化时，调用notify通知订阅者进行更新<br></p>
+<p style="font-size:14px;font-family:'Helvetica Neue, Arial'"><br><img src="/.com//mvvm.jpg"><br><span style="display:block;text-indent:2em">MVVM是一种基于前端开发的架构模式，包含三个模块：数据层modle、视图层view以及viewmodel业务逻辑层。核心功能便是提供View和ViewModle的双向数据绑定，<i style="color:#42b983">ViewModle可以理解为:for当前view的model。</i>通过ViemModel连接View和Model，简化了界面与业务的依赖，解决了数据频繁更新。当modle变化时，ViewModel会自动更新；而ViewModle变化时，View也会变化。</span><br><span style="display:block;text-indent:2em">vue的双向绑定参考了MVVM模式，利用Object.defineProperty()以及发布-订阅者模式实现双向绑定，理解defineProperty的作用与观察者模式的原理，对于vue的双向绑定掌握轻而易举：</span><br><span style="display:block;text-indent:2em"><br>（1）vue在初始化data选项时会遍历每个属性，利用Object.defineProperty()将他们转为getter/setter，使vue能过追踪依赖，在属性被访问和修改时通知变化。</span><br><span style="display:block;text-indent:2em"><br>（2）同时，Vue的指令编译器Compile对元素节点进行扫描和解析，初始化视图，并根据指令模板订阅Wather更新视图替换数据并将自己添加到Dep,并且绑定对于对应的回调函数【针对指令事件】。</span><br><span style="display:block;text-indent:2em"><br>（3）在数据改变时，触发Observer中的setter,调用dep的notify,Dep遍历所有的订阅者Watcher,并调用对应的upate函数，订阅者收到通知对视图进行更新。</span><br><br></p><br><img src="/.com//双向绑定02.png"><br><p style="font-size:14px;font-family:'Helvetica Neue, Arial'"><br>根据以上图示结合实例代码，深入理解：<br><br>1:实现一个Observer,对数据对象进行监听，触发getter时即初始化时添加订阅者，触发setter获取最新值，并调用notify通知所有遍历者调用自身的update进行更新，<br></p><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">// obj：data对象  vm: vue实例</span><br><span class="line">function observer(data, vm) &#123;</span><br><span class="line">    Object.keys(data).forEach(function(key) &#123;</span><br><span class="line">        defineReactive.(vm, key, data[key])</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line">function defineReactive(obj, key, val) &#123; </span><br><span class="line">    let dep = new Dep()  </span><br><span class="line">    Object.defineProperty(obj, key, &#123;</span><br><span class="line">        set: function (newVal) &#123;</span><br><span class="line">            if(newVal === val) return;</span><br><span class="line">            //  获取最新值</span><br><span class="line">            val = newVal;</span><br><span class="line">            //  发布通知</span><br><span class="line">            dep.notify()</span><br><span class="line">        &#125;,</span><br><span class="line">        get: function () &#123;</span><br><span class="line">            //  编译/初始化时</span><br><span class="line">            if(Dep.target) dep.addSub(Dep.target);</span><br><span class="line">            return val</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><br><p style="font-size:14px;font-family:'Helvetica Neue, Arial'">以上实现了对数据的监听，接下来便是如何将数据变化通知到订阅者。借用观察者模式，建立一个主题对象Dep，维护一个数组即所有订阅者,可添加删除订阅者，并发送通知。当数据发送变化时，调用notify通知订阅者进行更新<br></p>
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function Dep () &#123;</span><br><span class="line">    this.subs = []</span><br><span class="line">&#125;</span><br><span class="line">Dep.prototype = &#123;</span><br><span class="line">    addSub: function(sub)&#123;</span><br><span class="line">        this.subs.push(sub)</span><br><span class="line">    &#125;,</span><br><span class="line">    notify: function () &#123;</span><br><span class="line">        this.subs.forEach(function(sub)&#123;</span><br><span class="line">            sub.update()</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p style="font-size:14px;font-family:'Helvetica Neue, Arial'">接着，便是添加订阅者，怎么添加订阅者。观察上面代码，发现Dep实例在defineReactive函数中被创建。因此可以考虑在get中调用addSub添加订阅者<br></p><br><p style="font-size:14px;font-family:'Helvetica Neue, Arial'">2:实现一个Complier，解析模板指令，将模板中的变量替换为数据，初始化视图；并为指令绑定对应更新函数，添加监听数据的订阅者<br></p>
@@ -506,9 +506,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/vue/" rel="tag"># vue</a>
-          
             <a href="/tags/面试/" rel="tag"># 面试</a>
+          
+            <a href="/tags/vue/" rel="tag"># vue</a>
           
         </div>
       
@@ -602,7 +602,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -623,7 +623,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -646,7 +648,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">3</span>
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
