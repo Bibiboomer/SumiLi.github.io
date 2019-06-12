@@ -100,18 +100,18 @@
 <meta name="keywords" content="vue,面试">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue-基础知识梳理">
-<meta property="og:url" content="http://yoursite.com/2019/06/04/vue-基础知识梳理/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/06/04/vue-basic/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="最近半年接触的项目基本都是围绕着vue，趁此机会梳理下vue的基本概念，为8月份的跳槽做准备，fighting！ 渐进式框架vue涵盖以下所有模块，其中声明式渲染以及组件系统是vue核心库所包含的内容，而客户端路由、状态管理以及构建工具都有专门的解决方案。这些方案相互独立，vue运行在核心的基础上任意选用其他的组件，不一定需要全部应用   vue的MVVM模式的理解 vue借用了mvvm的设计实现">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/2019/06/04/vue-基础知识梳理/img/20190604/渐进式框架.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/06/04/vue-基础知识梳理/img/20190604/mvvm.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/06/04/vue-基础知识梳理/img/20190604/双向绑定02.png">
-<meta property="og:updated_time" content="2019-06-12T06:48:30.248Z">
+<meta property="og:image" content="http://yoursite.com/2019/06/04/vue-basic/img/20190604/渐进式框架.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/06/04/vue-basic/img/20190604/mvvm.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/06/04/vue-basic/img/20190604/双向绑定02.png">
+<meta property="og:updated_time" content="2019-06-12T07:03:08.253Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue-基础知识梳理">
 <meta name="twitter:description" content="最近半年接触的项目基本都是围绕着vue，趁此机会梳理下vue的基本概念，为8月份的跳槽做准备，fighting！ 渐进式框架vue涵盖以下所有模块，其中声明式渲染以及组件系统是vue核心库所包含的内容，而客户端路由、状态管理以及构建工具都有专门的解决方案。这些方案相互独立，vue运行在核心的基础上任意选用其他的组件，不一定需要全部应用   vue的MVVM模式的理解 vue借用了mvvm的设计实现">
-<meta name="twitter:image" content="http://yoursite.com/2019/06/04/vue-基础知识梳理/img/20190604/渐进式框架.jpg">
+<meta name="twitter:image" content="http://yoursite.com/2019/06/04/vue-basic/img/20190604/渐进式框架.jpg">
 
 
 
@@ -119,7 +119,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/06/04/vue-基础知识梳理/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/04/vue-basic/">
 
 
 
@@ -345,7 +345,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/04/vue-基础知识梳理/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/04/vue-basic/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="sumi Li">
@@ -405,7 +405,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-12 14:48:30" itemprop="dateModified" datetime="2019-06-12T14:48:30+08:00">2019-06-12</time>
+                <time title="Modified: 2019-06-12 15:03:08" itemprop="dateModified" datetime="2019-06-12T15:03:08+08:00">2019-06-12</time>
               
             
           </span>
@@ -477,9 +477,12 @@
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function MVVM(options) &#123;</span><br><span class="line">    this.data = options.data</span><br><span class="line">    let data = this.data</span><br><span class="line">    observer(data, this)</span><br><span class="line">    let id = options.el</span><br><span class="line">    let dom = nodeToFragment(document.getElementById(id), this)</span><br><span class="line">    // 编译完成后，将dom返回到app中</span><br><span class="line">    document.getElementById(id).appendChild(dom); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <hr>
-<h2 id="vue的虚拟dom理解"><a href="#vue的虚拟dom理解" class="headerlink" title="vue的虚拟dom理解"></a>vue的虚拟dom理解</h2><p style="font-size:14px;font-family:'Helvetica Neue, Arial';"> <span style="display:block;text-indent:2em">前端的任务抽象化主要包含两大工作：<i style="color:#42b983">维护状态[model]、更新视图[view]。</i><br>状态以及视图的更新都需要对dom进行操作；mvvm通过ViewModel将视图和状态进行绑定，避免对dom的直接操作，提高开发效率；然而对dom的操作仍然存在，导致了执行效率的降低。在这种场景下，一种兼顾开发效率与执行效率的方案显得尤为重要：<em style="color:#42b983">虚拟dom</em>。<br><br></span><br><span style="display:block;text-indent:2em">虚拟dom</span><br></p><p><br><br>## vue的双向绑定原理<br></p><p style="font-size:14px;font-family:'Helvetica Neue, Arial'">根据官网最新文档说明，vue并没有完全遵循mvvm模型，但vue的许多设计参考了这一模型。vue中<br></p><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">事实上</span><br></pre></td></tr></table></figure><br><br>## 总结<br><p style="font-size:14px;font-family:'Helvetica Neue, Arial'">不难发现，vue的一些基本设计理念并非仅仅该框架所有，同理react也采用了虚拟dom的设计来提高执行效率。目前前端的主流观点：dom应尽可能是一个函数式到状态的映射<br></p>
+<h2 id="vue的虚拟dom理解"><a href="#vue的虚拟dom理解" class="headerlink" title="vue的虚拟dom理解"></a>vue的虚拟dom理解</h2><p style="font-size:14px;font-family:'Helvetica Neue, Arial';"> <span style="display:block;text-indent:2em">前端的任务抽象化主要包含两大工作：<i style="color:#42b983">维护状态[model]、更新视图[view]。</i><br>状态以及视图的更新都需要对dom进行操作；mvvm通过ViewModel将视图和状态进行绑定，避免对dom的直接操作，提高开发效率；然而对dom的操作仍然存在，导致了执行效率的降低。在这种场景下，一种兼顾开发效率与执行效率的方案显得尤为重要：<em style="color:#42b983">虚拟dom</em>。<br><br></span><br><span style="display:block;text-indent:2em">虚拟dom</span><br></p><p><br><br>## vue的双向绑定原理<br></p><p style="font-size:14px;font-family:'Helvetica Neue, Arial'">根据官网最新文档说明，vue并没有完全遵循mvvm模型，但vue的许多设计参考了这一模型。vue中<br></p>
 
-<h2 id="参考🔗"><a href="#参考🔗" class="headerlink" title="参考🔗"></a>参考🔗</h2><p><a href="https://www.kancloud.cn/dataoedu/vue/327305" target="_blank" rel="noopener">MVVM模式</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">事实上</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p style="font-size:14px;font-family:'Helvetica Neue, Arial'">不难发现，vue的一些基本设计理念并非仅仅该框架所有，同理react也采用了虚拟dom的设计来提高执行效率。目前前端的主流观点：dom应尽可能是一个函数式到状态的映射<br></p>
+
+<h2 id="参考🔗"><a href="#参考🔗" class="headerlink" title="参考🔗"></a>参考🔗</h2><p style="font-size:12px;font-family:'Helvetica Neue, Arial';"><br>    <a href="https://www.kancloud.cn/dataoedu/vue/327305" style="color:#42b983;" target="_blank" rel="noopener">MVVM：MVVM是什么？</a><br><br>    <a href="https://segmentfault.com/a/1190000006599500" style="color:#42b983;" target="_blank" rel="noopener">剖析Vue原理&amp;实现双向绑定MVVM</a><br></p>
 
       
     </div>
@@ -681,7 +684,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#渐进式框架"><span class="nav-number">1.</span> <span class="nav-text">渐进式框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vue的MVVM模式的理解"><span class="nav-number">2.</span> <span class="nav-text">vue的MVVM模式的理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vue的虚拟dom理解"><span class="nav-number">3.</span> <span class="nav-text">vue的虚拟dom理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考🔗"><span class="nav-number">4.</span> <span class="nav-text">参考🔗</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#渐进式框架"><span class="nav-number">1.</span> <span class="nav-text">渐进式框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vue的MVVM模式的理解"><span class="nav-number">2.</span> <span class="nav-text">vue的MVVM模式的理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vue的虚拟dom理解"><span class="nav-number">3.</span> <span class="nav-text">vue的虚拟dom理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考🔗"><span class="nav-number">5.</span> <span class="nav-text">参考🔗</span></a></li></ol></div>
             
 
           </div>
