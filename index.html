@@ -1,1135 +1,4 @@
 <!DOCTYPE html>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<html class="theme-next muse use-motion" lang="">
-<head>
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
-
-<link rel="stylesheet" href="/css/main.css?v=7.1.1">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
-
-
-
-
-
-
-
-<script id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Muse',
-    version: '7.1.1',
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
-    back2top: true,
-    back2top_sidebar: false,
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-  
-
-
-
-
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="default">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-
-
-
-
-
-  
-  
-  <link rel="canonical" href="http://yoursite.com/"/>
-
-
-
-<script id="page.configurations">
-  CONFIG.page = {
-    sidebar: "",
-  };
-</script>
-
-  <title>Hexo</title>
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .motion-element,
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
-
-  .use-motion .logo,
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="default">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left 
-  page-home">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Hexo</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-    
-    
-  </div>
-
-  <div class="site-nav-toggle">
-    <button aria-label="Toggle navigation bar">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
-</div>
-
-
-
-<nav class="site-nav">
-  
-    <ul id="menu" class="menu">
-      
-        
-        
-        
-          
-          <li class="menu-item menu-item-home menu-item-active">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>Home</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>About</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>Tags</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>Categories</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>Archives</a>
-
-  </li>
-
-      
-      
-    </ul>
-  
-
-  
-    
-
-  
-
-  
-</nav>
-
-
-
-  
-
-
-
-</div>
-    </header>
-
-    
-
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-          <div id="content" class="content">
-            
-  <section id="posts" class="posts-expand">
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/13/vue-模板相关/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="sumi Li"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/06/13/vue-模板相关/" class="post-title-link" itemprop="url">vue-模板相关</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-06-13 10:03:07" itemprop="dateCreated datePublished" datetime="2019-06-13T10:03:07+08:00">2019-06-13</time>
-            
-
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/12/JS/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="sumi Li"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/06/12/JS/" class="post-title-link" itemprop="url">JS</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-06-12 15:35:26 / Modified: 15:47:53" itemprop="dateCreated datePublished" datetime="2019-06-12T15:35:26+08:00">2019-06-12</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JS/" itemprop="url" rel="index"><span itemprop="name">JS</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/04/vue-基础概念/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="sumi Li"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/06/04/vue-基础概念/" class="post-title-link" itemprop="url">vue-基础概念</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-06-04 10:21:48" itemprop="dateCreated datePublished" datetime="2019-06-04T10:21:48+08:00">2019-06-04</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-06-16 22:20:32" itemprop="dateModified" datetime="2019-06-16T22:20:32+08:00">2019-06-16</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/vue/" itemprop="url" rel="index"><span itemprop="name">vue</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>最近半年接触的项目基本都是围绕着vue，趁此机会梳理下vue的基本概念，为8月份的跳槽做准备，fighting！</p>
-<h2 id="渐进式框架"><a href="#渐进式框架" class="headerlink" title="渐进式框架"></a>渐进式框架</h2><p>vue涵盖以下所有模块，其中声明式渲染以及组件系统是vue核心库所包含的内容，而客户端路由、状态管理以及构建工具都有专门的解决方案。这些方案相互独立，vue运行在核心的基础上任意选用其他的组件，不一定需要全部应用<br><img src="/.com//渐进式框架.jpg"><br></p><p></p>
-<h2 id="vue的MVVM模式的理解"><a href="#vue的MVVM模式的理解" class="headerlink" title="vue的MVVM模式的理解"></a>vue的MVVM模式的理解</h2><blockquote>
-<p>vue借用了mvvm的设计实现双向绑定，同时需要借助表单元素</p>
-</blockquote>
-<p style="font-size:14px;font-family:'Helvetica Neue, Arial'"><br><img src="/.com//mvvm.jpg"><br>前端的任务抽象化主要包含两大工作：<i style="color:#42b983">维护状态[model]、更新视图[view]。</i><br>MVVM是一种基于前端开发的架构模式，包含三个模块：数据层modle、视图层view以及viewmodel业务逻辑层。核心功能便是提供View和ViewModle的双向数据绑定，<i style="color:#42b983">ViewModle可以理解为:for当前view的model。</i>通过ViemModel连接View和Model，简化了界面与业务的依赖，解决了数据频繁更新。当modle变化时，ViewModel会自动更新；而ViewModle变化时，View也会变化。<br>vue的双向绑定参考了MVVM模式，利用Object.defineProperty()以及发布-订阅者模式实现双向绑定，理解defineProperty的作用与观察者模式的原理，对于vue的双向绑定掌握轻而易举：<br>（1）vue在初始化data选项时会遍历每个属性，利用Object.defineProperty()将他们转为getter/setter，使vue能过追踪依赖，在属性被访问和修改时通知变化。<br>（2）同时，Vue的指令编译器Compile对元素节点进行扫描和解析，初始化视图，并根据指令模板订阅Wather更新视图替换数据并将自己添加到Dep,并且绑定对于对应的回调函数【针对指令事件】。有的订阅者Watcher,并调用对应的upate函数，订阅者收到通知对视图进行更新。<br></p><br><img src="/.com//双向绑定02.png"><br><p style="font-size:14px;font-family:'Helvetica Neue, Arial'"><br>根据以上图示结合实例代码，深入理解：<br>1:实现一个Observer,对数据对象进行监听，触发getter时即初始化时添加订阅者，触发setter获取最新值，并调用notify通知所有遍历者调用自身的update进行更新。<br></p><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">// obj：data对象  vm: vue实例</span><br><span class="line">function observer(data, vm) &#123;</span><br><span class="line">    Object.keys(data).forEach(function(key) &#123;</span><br><span class="line">        defineReactive.(vm, key, data[key])</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line">function defineReactive(obj, key, val) &#123; </span><br><span class="line">    let dep = new Dep()  </span><br><span class="line">    Object.defineProperty(obj, key, &#123;</span><br><span class="line">        set: function (newVal) &#123;</span><br><span class="line">            if(newVal === val) return;</span><br><span class="line">            //  获取最新值</span><br><span class="line">            val = newVal;</span><br><span class="line">            //  发布通知</span><br><span class="line">            dep.notify()</span><br><span class="line">        &#125;,</span><br><span class="line">        get: function () &#123;</span><br><span class="line">            //  编译/初始化时</span><br><span class="line">            if(Dep.target) dep.addSub(Dep.target);</span><br><span class="line">            return val</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><br><p style="font-size:14px;font-family:'Helvetica Neue, Arial'">以上实现了对数据的监听，接下来便是如何将数据变化通知到订阅者。借用观察者模式，建立一个主题对象Dep，维护一个数组即所有订阅者,可添加删除订阅者，并发送通知。当数据发送变化时，调用notify通知订阅者进行更新<br></p><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function Dep () &#123;</span><br><span class="line">    this.subs = []</span><br><span class="line">&#125;</span><br><span class="line">Dep.prototype = &#123;</span><br><span class="line">    addSub: function(sub)&#123;</span><br><span class="line">        this.subs.push(sub)</span><br><span class="line">    &#125;,</span><br><span class="line">    notify: function () &#123;</span><br><span class="line">        this.subs.forEach(function(sub)&#123;</span><br><span class="line">            sub.update()</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><br><p style="font-size:14px;font-family:'Helvetica Neue, Arial'">接着，便是添加订阅者，怎么添加订阅者。观察上面代码，发现Dep实例在defineReactive函数中被创建。因此可以考虑在get中调用addSub添加订阅者。<br>2:实现一个Complier，解析模板指令，将模板中的变量替换为数据，初始化视图；并为指令绑定对应更新函数，添加监听数据的订阅者<br></p>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">function compile() &#123;</span><br><span class="line">    let reg = /\&#123;\&#123;(.*)\&#125;\&#125;/;</span><br><span class="line">    //  节点元素</span><br><span class="line">    if (node.nodeType === 1) &#123;</span><br><span class="line">        let attr = node.attributes;</span><br><span class="line">        for (var i = 0; i &lt; attr.length; i++) &#123;</span><br><span class="line">            if (attr[i].nodeName == &apos;v-model&apos;) &#123;</span><br><span class="line">                var name = attr[i].nodeValue; </span><br><span class="line">                node.addEventListener(&apos;input&apos;, function (e) &#123;</span><br><span class="line">                    // 触发该属性的set方法</span><br><span class="line">                    vm[name] = e.target.value;</span><br><span class="line">                &#125;);</span><br><span class="line">                node.value = vm[name]; // 将data的值赋给该node</span><br><span class="line">                node.removeAttribute(&apos;v-model&apos;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    // 节点类型为text</span><br><span class="line">    if (node.nodeType === 3) &#123;</span><br><span class="line">        if (reg.test(node.nodeValue)) &#123;</span><br><span class="line">            // 获取匹配到的字符串</span><br><span class="line">            var name = RegExp.$1; </span><br><span class="line">            name = name.trim();</span><br><span class="line">            new Watcher(vm, node, name);  </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function nodeToFragment (node, vm) &#123;</span><br><span class="line">    // 创建文档碎片容器-虚拟容器，在dom操作较多时，此API性能优化明显</span><br><span class="line">    var flag = document.createDocumentFragment();</span><br><span class="line">    var child;</span><br><span class="line">    while (child = node.firstChild) &#123;</span><br><span class="line">        compile(child, vm);</span><br><span class="line">        flag.append(child); // 将子节点劫持到文档片段中</span><br><span class="line">    &#125;</span><br><span class="line">    return flag;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p style="font-size:14px;font-family:'Helvetica Neue, Arial'"><br>3:实现一个watcher,作为Observer与Compile的桥梁，订阅并收到每个属性变动的通知，以及执行指令绑定的回调函数，从而更新视图：<br><br></p>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// 订阅者：拥有更新方法</span><br><span class="line">function Watcher (vm, node, name) &#123;</span><br><span class="line">    Dep.target = this; // Watcher  </span><br><span class="line">    this.name = name;  // 变量</span><br><span class="line">    this.node = node;  // 变量所在的节点</span><br><span class="line">    this.vm = vm;</span><br><span class="line">    // 出发getter，实现自身实例化时往属性订阅器(dep)里面添加自己</span><br><span class="line">    this.update()</span><br><span class="line">    Dep.target = null;</span><br><span class="line">&#125;</span><br><span class="line">Watcher.prototype = &#123;</span><br><span class="line">    update: function () &#123;</span><br><span class="line">        // this.vm[this.name]触发getter,将自己添加到消息订阅器中Dep</span><br><span class="line">        this.node.nodeValue = this.vm[this.name];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p style="font-size:14px;font-family:'Helvetica Neue, Arial'">MVVM构造函数,传入vue选项对象，调用Observer劫持数据进行监听，并调用解析器compiler解析vue模板，最后更新为dom即视图<br></p>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function MVVM(options) &#123;</span><br><span class="line">    this.data = options.data</span><br><span class="line">    let data = this.data</span><br><span class="line">    observer(data, this)</span><br><span class="line">    let id = options.el</span><br><span class="line">    let dom = nodeToFragment(document.getElementById(id), this)</span><br><span class="line">    // 编译完成后，将dom返回到app中</span><br><span class="line">    document.getElementById(id).appendChild(dom); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="虚拟dom理解"><a href="#虚拟dom理解" class="headerlink" title="虚拟dom理解"></a>虚拟dom理解</h2><p style="font-size:14px;font-family:'Helvetica Neue, Arial';"><br>    虚拟dom简而言之就是用js按照dom的结构来生成以及维护的一组树形结构的对象，通过render方法将其渲染成真实的dom节点<br>    而diff则是通过js层面的计算，将每次新渲染时生成的新dom树与旧的dom树进行对比，记录差异，最终返回一个patch对象，即补丁对象<br>    通过特定的操作解析patch对象，局部更新dom,完成页面的重新渲染。<br>    <img src="/.com//虚拟dom01.png"><br>    <em style="font-weight:800;font-style: inherit">引入虚拟dom的意义与价值：</em><br>    1、虚拟dom使得mvvm框架更加灵活，例如vue才用了虚拟dom，它的组件抽象能力更强，可使用在非dom以外的场景，实现诸如服务端渲染、同构渲染等；<br>    2、同时虚拟dom提供了函数式的UI编程，<br>    3、最后，虚拟dom的存在给框架提供了普适场景下的性能的提升,使性能与可维护性之间达到平衡。dom的操作是一种同步操作，对于频繁的dom操作会导致用户体验以及性能提升的下降；而虚拟dom则是对比新渲染对象树和旧对象树，记录差异两者，记录下来的不同才是真正的dom操作，然后把它们应用在真正的dom树上，避免了大量无效的操作。<br>    <em style="font-weight:800;font-style: inherit">虚拟dom算法包括一下几个步骤：</em><br>    1、用JS对象结构表示dom树结构，用这个dom树构建一个真正的dom树，插入文档<br>    2、当状态变更的时候，重新构造一个新的dom树，利用diff算法将新的树和旧的树进行对比，记录两颗树的差异<br>        diff算法的具体分析：分为两种情况<br>        <img src="/.com//虚拟dom02.jpg"><br>        （1）不设置key：此时oldCh与newCh只进行头尾两端的相互比较即双向链式比对<br>        （2）设置key：除了头尾两端的相互比较，还会从用key生产的对象oldKey中查找匹配对象，所以节点设置key，可以更高效的利用dom<br>        利用diff算法比对两棵树，存储差异patches对象，按下边四种格式<br>        ——2.1节点类型改变<br>        ——2.2属性改变<br>        ——2.3文本改变<br>        ——2.4增加/移动/删除子节点<br>    3、渲染差异<br>        把记录的差异存储到patch对象，解析对象应用到真正的dom树上，<br>        即时局部更新dom，利用document.fragments来操作dom，浏览器一次性更新<br>    以下通过代码进一步理解虚拟dom的核心：diff算法<br></p>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">// 第一步：使用JS对象表示DOM节点</span><br><span class="line">function Element(tagName, props, children)&#123;</span><br><span class="line">    this.tagName = tagName</span><br><span class="line">    this.props = props</span><br><span class="line">    this.children = children</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 将dom树转换为真正的dom结构el</span><br><span class="line">Element.prototype.render = function() &#123;</span><br><span class="line">    let el = document.createElement(this.tagName)</span><br><span class="line">    let props = this.props</span><br><span class="line"></span><br><span class="line">    for(let propName in props) &#123;</span><br><span class="line">        let propVal = props[propName]</span><br><span class="line">        el.setAttribute(propName, propVal)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    let children = chiledren || []</span><br><span class="line">    children.forEach(function(child)&#123;</span><br><span class="line">        let childEl = (child instanceod Element) ? chilid.render()</span><br><span class="line">        : document.createTextNode(child)</span><br><span class="line">        el.appendChild(childEl)</span><br><span class="line">    &#125;)</span><br><span class="line">    return el</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p style="font-size:14px;font-family:'Helvetica Neue, Arial';"><br>    第二步： 使用diff算法比较两颗虚拟dom树的差异，这个过程就是调用patch函数，类似打补丁一样修改dom<br>    虚拟dom比对的是同一个层级的元素，使得算法复杂度达到O(n)<br>    在实际的代码中，会对新旧两棵树进行一个深度优先的遍历，这样每个节点都会有一个唯一的标记。若有差异，就记录到一个对象中<br>    diff算法核心：updateChildren()函数：通过对两课树children进行双向链式对比，实现即时操作dom，<br>        以下分两种情况讨论：<br>        当两个节点不可比较时，新节点直接把老节点替换掉<br>        当两个节点值得比较时，<br>            1） 新节点 == 老节点——不做任何操作<br>            2） 新节点.text !== 老节点.text——进行节点文本替换<br>            3） 仅新节点.children !== null——添加字节点<br>            4） 仅老节点.children !== null——删除老节点<br>            5） 新节点.children !== 老节点.children 比较复杂一点，调用updateChildren()进行双向链式对比【看代码更容易理解】<br>    <img src="/.com//虚拟dom.jpg"><br></p><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line">// 判断是否值得比较</span><br><span class="line">function sameVnode(oldVnode, vnode)&#123;</span><br><span class="line">    return vnode.key === oldVnode.key &amp;&amp; vnode.sel === oldVnode.sel</span><br><span class="line">&#125;</span><br><span class="line">function patchVnode(oldVnode, vnode)&#123;</span><br><span class="line">    // vnode引用到现在真实的dom</span><br><span class="line">    conse el = vnode.el = oldVnode.el</span><br><span class="line">    let i, oldCh = oldVnode.Children, ch = vnode.Children</span><br><span class="line">    // 引用一致，则没有变化</span><br><span class="line">    if(oldVnode === vnode) return </span><br><span class="line"></span><br><span class="line">    // 文本节点比较，需要修改</span><br><span class="line">    if(oldVnode.text !== null &amp;&amp; vnode.test !== null &amp;&amp;  oldVnode.text !== vnode.text) &#123;</span><br><span class="line">        Node.textcontext = vnode.text</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        if (oldCh &amp;&amp; ch &amp;&amp; oldCh !== ch)&#123;</span><br><span class="line">            // diff的核心</span><br><span class="line">            updateChildren(el, odlCh, ch)</span><br><span class="line">        &#125; else if (ch)&#123;</span><br><span class="line">            createEle(vnode)</span><br><span class="line">        &#125; else if (odlCh)&#123;</span><br><span class="line">            removeChildren(el)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">function patch(oldVnode, vnode) &#123;</span><br><span class="line">    if(sameVnode(oldVnode,vnode)&#123;</span><br><span class="line">        patchVnode(oldVnode,vnode)</span><br><span class="line">    &#125;) else &#123;</span><br><span class="line"></span><br><span class="line">        // 节点不值得比较</span><br><span class="line">        const oEl = oldVal.el</span><br><span class="line">        let parentEle = apl.parentNode(oEl) // 真实dom</span><br><span class="line">        createEle(vnode) // 创建vnode的真实dom</span><br><span class="line">        if(parentEle !== null) &#123;</span><br><span class="line">            新节点直接把老节点整个替换</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return vnode</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// vue的两颗树的children的比较是双向链表，边patch边操作dom</span><br><span class="line">function updateChildren(parentElm, oldCh, newCh) &#123;</span><br><span class="line">    let oldStartIdx = 0, newStartIdx = 0</span><br><span class="line">    let oldEndIdx = oldCh.length - 1, newEndIdx = newCh.lenth - 1</span><br><span class="line">    let oldStartVnode = oldCh[0], oldEndVnode = oldCh[oldEndIdx]</span><br><span class="line">    let newStartVnode = newCh[0], newEnVnode = newCh[newEndIdx]</span><br><span class="line">    let oldKeyToIdx</span><br><span class="line">    let indxInOld</span><br><span class="line">    let elmToMove</span><br><span class="line">    let before</span><br><span class="line">    while(oldStartIdx &lt;= oldEndIdx &amp;&amp; newStartIdx &lt;= newEndIdx) &#123;</span><br><span class="line">        if (oldStartVnode == null) &#123;</span><br><span class="line">            oldStartVnode = oldCh[++oldStartIdx] // 开头的旧节点往右遍历</span><br><span class="line">        &#125; else if (oldEndVnode == null) &#123;</span><br><span class="line">            oldEndVnode = oldCh[--oldEndIdx]     // 末尾的旧节点往左遍历</span><br><span class="line">        &#125; else if (newStartVnode == null) &#123;</span><br><span class="line">            newStartVnode = newCh[++newStartIdx]  // 开头新节点往右遍历</span><br><span class="line">        &#125; else if (newEndVnode == null) &#123;</span><br><span class="line">            newEndVnode = newCh[--newEndIdx]      // 末尾新节点往左遍历</span><br><span class="line"></span><br><span class="line">        // 开始：这部分代码时通过双向链式比较子节点，同时进行四条线</span><br><span class="line">        &#125; else if(sameVnode(oldStartVnode,newStartVnode))&#123;</span><br><span class="line">            patchVnode(oldStartVnode,newStartVnode)</span><br><span class="line">            oldStartVnode = oldCh[++oldStartIdx]</span><br><span class="line">            newStartVnode = newCh[++newStartIdx]</span><br><span class="line">        &#125; else if(sameVnode(oldStartVnode, newEndVnode))&#123;</span><br><span class="line">            patchVnode(oldStartVnode,newEndVnode)</span><br><span class="line">            oldStartVnode = oldCh[++oldStartIdx]</span><br><span class="line">            newEndVnode = newCh[--newEndIdx]</span><br><span class="line">        &#125;  else if(sameVnode(oldEndVnode, newStartVnode))&#123;</span><br><span class="line">            patchVnode(oldEndVnode,newStartVnode)</span><br><span class="line">            oldEndVnode = oldCh[--oldEndIdx]</span><br><span class="line">            newStartVnode = newCh[++newSatrtIdx]</span><br><span class="line">        &#125;   ekse if(sameVnode(oldEndVnode, newEndVnode))&#123;</span><br><span class="line">            patchVnode(oldEndVnode,newEndVnode)</span><br><span class="line">            oldEndVnode = oldCh[--oldEndIdx]</span><br><span class="line">            newEndVnode = newCh[--newEndIdx]</span><br><span class="line">        &#125;</span><br><span class="line">        // 结束</span><br><span class="line"></span><br><span class="line">        else &#123;</span><br><span class="line">            // 使用key时的比较</span><br><span class="line">            if (oldKeyToIdx === undefined) &#123;</span><br><span class="line">                // 由key生成index表</span><br><span class="line">                oldKeyToIdx = createKeyToOldIdx(oldCh, oldStartIdx, oldEndIdx) </span><br><span class="line">            &#125;</span><br><span class="line">            idxInOld = oldKeyToIdx[newStartVnode.key]</span><br><span class="line">            if (!idxInOld) &#123;</span><br><span class="line">                // 新的节点</span><br><span class="line">                api.insertBefore(parantElm, createEle(newStartVnode).el, oldStartVnode.el)</span><br><span class="line">                newStartVnode = newCh[++newStartIdx]</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                elmToMove = oldCh[idxInOld]</span><br><span class="line">                if (elmToMove.sel !== newStartVnode.sel) &#123;</span><br><span class="line">                    api.insertBefore(parantElm, createEle(newStartVnode).el, oldStartVnode.el)</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    patchVnode(elmToMove, newStartVnode)</span><br><span class="line">                    oldCh[idxInOld] = null</span><br><span class="line">                    api.insertBefore(parantElm, createEle(newStartVnode).el, oldStartVnode.el)</span><br><span class="line">                &#125;</span><br><span class="line">                newStartVnode = newCh[++newStartIdx]</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if (oldStartIdx &gt; oldEndIdx) &#123;</span><br><span class="line">        // 旧dom先遍历结束</span><br><span class="line">        before = newCh[newEndIdx+1] == null ? null : newCh[newEndIdx+1].el</span><br><span class="line">        addVnode(parentElm, before, newCh, newStartIdx, newEndIdx)</span><br><span class="line">    &#125; else if(newStartIdx &gt; newEndIdx) &#123;</span><br><span class="line">        // 新dom先遍历结束</span><br><span class="line">        removeVnode(parentElm, oldCh, odlStartIdx, oldEndIdx)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><br>## 参考 🔗<br><br><p style="font-size:12px;font-family:'Helvetica Neue, Arial';"><br>    <a href="https://www.kancloud.cn/dataoedu/vue/327305" style="color:#42b983;" target="_blank" rel="noopener">MVVM：MVVM是什么？</a><br><br>    <a href="https://segmentfault.com/a/1190000006599500" style="color:#42b983;" target="_blank" rel="noopener">剖析Vue原理&amp;实现双向绑定MVVM</a><br>    <a href="https://www.zhihu.com/question/31809713" style="color:#42b983;" target="_blank" rel="noopener">虚拟dom：知乎网上都说操作真实 DOM 慢，但测试结果却比 React 更快，为什么？</a><br>    <a href="https://juejin.im/post/5c8e5e4951882545c109ae9c#heading-7" style="color:#42b983;" target="_blank" rel="noopener">让虚拟DOM和DOM-diff不再成为你的绊脚石</a><br></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/14/canvas/canvas02/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="sumi Li"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/14/canvas/canvas02/" class="post-title-link" itemprop="url">canvas基础系列-三角函数(2)</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-05-14 16:36:46" itemprop="dateCreated datePublished" datetime="2019-05-14T16:36:46+08:00">2019-05-14</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-05-31 14:30:05" itemprop="dateModified" datetime="2019-05-31T14:30:05+08:00">2019-05-31</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/canvas/" itemprop="url" rel="index"><span itemprop="name">canvas</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="三角函数图像与各类运动"><a href="#三角函数图像与各类运动" class="headerlink" title="三角函数图像与各类运动"></a>三角函数图像与各类运动</h1><blockquote>
-<p>一点心得：canvas的各种入门教程动画，重点是理解运动轨迹与数学/物理等各种公式的联系，多动手去尝试，不必要过分纠结文章中的有关等式部分的代码,效果有多种途径可以实现，进入正文…</p>
-</blockquote>
-<h2 id="根据余弦函数图像，创建上下平滑运动"><a href="#根据余弦函数图像，创建上下平滑运动" class="headerlink" title="根据余弦函数图像，创建上下平滑运动"></a>根据余弦函数图像，创建上下平滑运动</h2><p>首先需要理解余弦函数的波形线怎么来的？在数学中的坐标轴中，x轴代表角度【弧度制】，y轴代表根据角度得到的余弦<br>即波形上的任意一点满足 y = a * Math.cos(Math.PI * deg)</p>
-<h3 id="分析步骤"><a href="#分析步骤" class="headerlink" title="分析步骤"></a>分析步骤</h3><h4 id="分析需求"><a href="#分析需求" class="headerlink" title="分析需求"></a>分析需求</h4><blockquote>
-<p>在画布上实现余弦曲线波形;<br>点击增加按钮时，新增加一个小球；<br>小球在余弦的函数曲线上平滑的上下运动；最后消失</p>
-</blockquote>
-<h4 id="伪代码"><a href="#伪代码" class="headerlink" title="伪代码"></a>伪代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">// 获取画布</span><br><span class="line">let canvas = document.getElementById(&apos;canvas&apos;)</span><br><span class="line">let ctx = canvas.getContext(&apos;2d&apos;)</span><br><span class="line"></span><br><span class="line">// 初始化画布中存在的对象</span><br><span class="line">let balls = [] // 存储所有小球</span><br><span class="line"></span><br><span class="line">// 创建构造函数，创建小球对象</span><br><span class="line">function Ball (deg, r) &#123;</span><br><span class="line">    this.x = deg * 10 + 50</span><br><span class="line">    this.y =  Math.cos(deg)*100 + 100</span><br><span class="line">    this.r = r</span><br><span class="line">    this.deg = deg</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 画余弦函数图像</span><br><span class="line">function drawCodLine () &#123;</span><br><span class="line">    // 余弦函数公式：y = a * Math.cos(deg)</span><br><span class="line">    // 根据deg的变化，y坐标满足余弦公式的波形</span><br><span class="line">    // 设置起始位置（50,100）</span><br><span class="line">    // 注意canvas中的y轴方向与坐标轴的Y轴方向是相反的</span><br><span class="line">    for (let deg = 0; deg &lt; Math.PI * 16; deg += 0.1) &#123;</span><br><span class="line">        ctx.beginPath()</span><br><span class="line">        let x = deg * 10 + 50</span><br><span class="line">        let y = Math.cos(deg)*100 + 100</span><br><span class="line">        ctx.arc(x,y,2,0,2*Math.PI,true)</span><br><span class="line">        ctx.fill()</span><br><span class="line">    &#125;</span><br><span class="line">    ctx.save()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 增加点击按钮事件，增加小球</span><br><span class="line">function addBall () &#123;</span><br><span class="line">    console.log(&apos;增加&apos;)</span><br><span class="line">    let ball = new Ball(0,10)</span><br><span class="line">    balls.push(ball)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 初始化小球</span><br><span class="line">let ball = new Ball(0, 10)</span><br><span class="line">balls.push(ball)</span><br><span class="line"></span><br><span class="line">// 确定小球的初始坐标，每次调用自身draw时改变小球的坐标</span><br><span class="line">function draw () &#123;</span><br><span class="line">    ctx.clearRect(0, 0, canvas.width, canvas.height)</span><br><span class="line">    ctx.fillStyle = &quot;pink&quot;</span><br><span class="line">    drawCodLine()</span><br><span class="line">    for (let i = 0; i &lt; balls.length; i++) &#123;</span><br><span class="line">        if (balls[i].deg &gt;= 0 &amp;&amp; balls[i].deg &lt; Math.PI * 16) &#123;</span><br><span class="line">            balls[i].x = balls[i].deg * 10 + 50</span><br><span class="line">            balls[i].y = Math.cos(balls[i].deg)*100 + 100</span><br><span class="line">            balls[i].deg += 0.1</span><br><span class="line">            ctx.save()</span><br><span class="line">            ctx.fillStyle = &quot;yellow&quot;</span><br><span class="line">            ctx.beginPath()</span><br><span class="line">            ctx.arc(balls[i].x,balls[i].y,balls[i].r,0,2*Math.PI,true)</span><br><span class="line">            ctx.fill()        </span><br><span class="line">            ctx.restore()</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            balls.splice(i,1)</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    requestAnimationFrame(draw)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="案例展示"><a href="#案例展示" class="headerlink" title="案例展示"></a>案例展示</h3><iframe src="https://codepen.io/sumili/pen/LoyXJd" width="800" height="500"></iframe>
-
-
-
-
-
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/13/canvas/canvas01/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="sumi Li"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/13/canvas/canvas01/" class="post-title-link" itemprop="url">canvas基础系列-三角函数</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-05-13 10:32:11" itemprop="dateCreated datePublished" datetime="2019-05-13T10:32:11+08:00">2019-05-13</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-05-14 16:42:45" itemprop="dateModified" datetime="2019-05-14T16:42:45+08:00">2019-05-14</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/canvas/" itemprop="url" rel="index"><span itemprop="name">canvas</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-
-<!DOCTYPE html>
 <html lang="en">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="UTF-8">
@@ -1137,524 +6,260 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        head,body{
-            widtH:100%;
+        body {
+            width: 100%;
             height: 100%;
+            overflow: hidden;
+            background-color: #03030c;
+            margin: unset;
+        }
+        a{ 
+            text-decoration:none; 
+            color:rgb(85, 26, 139);
+        }
+        .home-canvas {
+            position: fixed;
+            top:0;left:0;right:0;
         }
         #home {
-            width:100%;
-            height: 100%;
-            background: red;
+            position: relative;
+            margin: 0 20px;
         }
-        .code_box {
-            background: #f7f7f7;
-            font-size: 14px;
-            color: #4d4d4c;
-            overflow: auto;
-            margin: 20px 0;
-            padding: 20px;
+        #home > .header {
+            font-family: fantasy;
+            font-size: 28px;
+            font-weight: 800;
+            color: rgb(85, 26, 139);
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
         }
     </style>
+    <style src="./css/indexs.styl"></style>
 </head>
 <body>
-    <div>
-        <h1 id="案例预览">案例预览</h1>
-        <canvas id="canvas" width="400" height="300" style="background:#333"></canvas>
-        <div class="point">
-            <span>在屏幕上移动鼠标试试</span><br>
-            <button id="addDisk">增加三角磁铁</button>
+    <div class="home-canvas">
+    </div>
+    <div id="home">
+        <div class="header">
+            <a>SUMI LI</a>
+            <a href="/archives">BLOG</a>
         </div>
-        <h1 id="了解三角函数">了解三角函数</h1>
-        <p> 在使用三角函数进行canvas动画的应用之前，复习下高中数学关于三角函数的知识点</p>
-        <ul>
-            <li>一弧度 = 弧长等于半径的弧所对应的圆心角的一弧度</li>
-            <li>360角度 = 2π （一个圆的弧度）
-                <ul>
-                    <li>1弧度 =  180 / π； 1角度 =  π  / 180</li>
-                </ul>
-            </li>
-            <li>
-                正弦函数：圆上任意一点的y坐标和弧长之间的关联
-            </li>
-            <li>
-                余弦函数：圆上任意一点的x坐标和弧长之间的关联
-            </li>
-            <li>三角函数(a是对边，b是领边，c是斜边，θ是角度)
-                <ul>
-                    <li>sin(θ) = a / c</li>
-                    <li>cos(θ) = b / c</li>
-                    <li>tan(θ) = a / b</li>
-                </ul>
-            </li>
-            <li>反三角函数
-                <ul>
-                    <li>arcsin(a/c) = θ</li>
-                    <li>arccos(b/c) = θ</li>
-                    <li>arctan(a/b) = θ</li>
-                    <li>Math.atan2(a,b) = θ
-                        <p>根据维基百科的解释：已坐标原点为起点，指向（x,y）的射线在坐标平面上与x轴方向之间的角的角度</p>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-        <p>注意：在Math对象中的三角函数采用的弧度制</p>
+		<!-- <a href="http://threejs.org" target="_blank" rel="noopener">three.js</a> - webgl particle billboards example -->
     </div>
-    <div>
-        <h1 id="具体案例：指南针">具体案例：指南针</h1>
-        <p>Math.atan2(a,b)实现指南针随鼠标旋转</p>
-            <div>
-                <p>第一步-场景描述：页面上有一个指南针，但鼠标划入画布时，指南针跟着鼠标旋转；同时页面中增加一个按钮，
-                    点击按钮会在画布中随机的位置上产生一个新的指南针，同样也是跟着鼠标旋转</p>
-                <p>第二步-伪代码分析<br>
-                    <div class="code_box">
-                        html部分<br>
-                        创建一个button按钮，用于点击增加指南针<br>
-                        创建一个canvas元素，用于指南针动画效果展示<br><br>
-                        js部分<br>
-                        获取canvas对象、与getContext('2d')获取渲染上下文和绘画功能<br>
-                        1：初始化<br>
-                            &nbsp;-&nbsp;旋转角度 rotation = 0 <br>
-                            &nbsp;-&nbsp;存储每次点击新增加的指南针 disks = []<br>
-                            &nbsp;-&nbsp;鼠标坐标 point = {}<br>
-                        2：创建画布中的指南针【初始化一个指南针】<br>
-                            &nbsp;-&nbsp;创建构造函数，通过let d = new Disk()创建一个已知 坐标和大小的对象d<br>
-                            &nbsp;-&nbsp;push进disks数组<br>
-                        3：绘制指南针
-                            &nbsp;-&nbsp;创建函数drawDisk，for循环遍历数组disks中存在的所有指南针对象<br>
-                            &nbsp;-&nbsp;计算旋转角度；绘画鼠标小红点、不同颜色三角形组成的指南针<br>
-                            &nbsp;-&nbsp;使用requestAnimationFrame调用自身drawDisk<br>
-                        4：添加监听事件
-                            &nbsp;-&nbsp;button元素的click事件，调用构造函数Disk 创建新的指南针<br>
-                            &nbsp;-&nbsp;canvas元素的mousemove事件， 改变point对象的x与y值，即鼠标的位置更新<br>
-                    </div>
-                </p>
-            </div>
-    </div>
-    <div>
-        <h1 id="知识点总结">知识点总结</h1>
-        <p>canvas.save()的作用：保存画布的状态，后续可以进行旋转、平移、缩放、裁剪操作</p>
-        <p>canvas.resotore()的作用：恢复上一次使用save之前保存的状态，反正受行旋转、平移、缩放、裁剪影响</p>
-        <p>requestAnimationFrame()的作用：</p>
+    <script src="./js/libs/three.js"></script>
+    <script src="./js/libs/stats.min.js"></script>
+    <script src="./js/libs/tween.min.js"></script>
+	<script src="./js/loaders/OBJLoader.js"></script>
+    <script>
+        //  初始化场景
+        let scene = new THREE.Scene();
+        //  初始化相机
+        let camera = new THREE.PerspectiveCamera(105, window.innerWidth / window.innerHeight, 10, 10000);
+        camera.position.z = 200;
 
-    </div>
+        // renderer 的承载容器
+        let box = document.getElementsByClassName('home-canvas')[0],
+        container = document.createElement('div');
+        box.appendChild(container);
 
-</body>
-</html>
-<script>
-    /**
-      测试指南针，优化指南针，所有指南针都是同一方向
-    */
-   let canvas = document.getElementById('canvas')
-   let ctx = canvas.getContext('2d')
+        //  初始化renderer
+		let renderer = new THREE.WebGLRenderer();
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        container.appendChild(renderer.domElement);// renderer.domElement获取生成的canvas对象，追加到dom中
+        // renderer.setClearColor(0x1125aa, 1)
 
+        // 天空粒子
+        let skyParticlesGeometry;
 
-    // 获取旋转角度
-    let rotation = 0
-    // 存储所有存在的磁铁
-    let disks = []
-    // 初始化鼠标坐标
-    let point = {}
-   
-    // 构造函数：创建磁铁
-    function Disk(x,y,width,height) {
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.height = height;
-    }
-    // 获取画布中心点
-    let centerX = Math.floor(canvas.width / 2)
-    let centerY = Math.floor(canvas.height / 2)
-    // 创建画布中初始磁铁
-    let d = new Disk(centerX, centerY, 100, 10)
-    disks.push(d)
+        // 切换的对象数组
+        let glist = [];
 
-    // 按钮事件
-    document.getElementById('addDisk').addEventListener('click',function () {
-        let height = Math.floor(Math.random()*5+5)
-        let width  = Math.floor(Math.random()*30+40)
-        let x = Math.floor(Math.random()*canvas.width)
-        let y = Math.floor(Math.random()*canvas.height)
-        disks.push(new Disk(x,y,width,height))
-    }, false)
-    // 绘制磁铁
-    function drawDisk() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height)
-        for (let i = 0; i < disks.length; i++) {
-            var d = disks[i]
-            // 计算旋转角度
-            rotation = Math.atan2(point.y-d.y,point.x-d.x) // 各自的轨迹
-            // rotation = Math.atan2(point.y-disks[0].y,point.x-disks[0].x) // 统一的轨迹
-            // 绘制红色小点
-            ctx.beginPath()
-            ctx.fillStyle = "red"
-            ctx.arc(point.x,point.y,5,0,2*Math.PI,true)
-            ctx.fill()
-            // 绘制小三角形
-            ctx.save()
-            // 将(d.x,d.y)坐标定义画布的起点（0，0）
-            ctx.translate(d.x,d.y)
-            ctx.rotate(rotation)
-            ctx.beginPath()
-            ctx.fillStyle = "red"
-            ctx.moveTo(d.width,0)
-            ctx.lineTo(0, -d.height)
-            ctx.lineTo(0, d.height)
-            ctx.closePath()
-            ctx.fill()
-            ctx.beginPath()
-            ctx.fillStyle = "blue"
-            ctx.moveTo(-d.width, 0)
-            ctx.lineTo(0,-d.height)
-            ctx.lineTo(0, d.height)
-            ctx.closePath()
-            ctx.fill()
-            ctx.restore()
+        // 当前点阵模型index
+        var objIndex = -1;
+
+        function generateSprite() {
+            var canvas = document.createElement('canvas');
+            canvas.width = 16;
+            canvas.height = 16;
+            var context = canvas.getContext('2d');
+            // 依次：x1,y1,r1内圆坐标及半径，x2,y2,r2外圆坐标及半径
+            // var gradient = context.arc(8,8,8,0,2 * Math.PI);
+            var gradient = context.createRadialGradient(canvas.width / 2, canvas.height / 2, 0, canvas.width / 2, canvas.height / 2, canvas.width / 2);
+            gradient.addColorStop(0, 'rgba(255,255,255,1)');
+            gradient.addColorStop(0.2, 'rgba(255,255,255,1)');
+            gradient.addColorStop(0.4, 'rgba(0,0,255,1)');
+            gradient.addColorStop(1, 'rgba(0,0,0,1)');
+
+            context.fillStyle = gradient;
+            context.shadowColor = 'white';
+            context.shadowBlur = 10;
+            context.fillRect(0, 0, canvas.width, canvas.height);
+
+            var texture = new THREE.Texture(canvas);
+            texture.needsUpdate = true;
+            return texture;
         }
-        requestAnimationFrame(drawDisk)
-    }
-    drawDisk()
-    // 给canvas增加监听事件
-    document.getElementById('canvas').addEventListener('mousemove',function(event){
-        let fixLeft = (window.innerWidth - 900)/ 2
-        point.x = event.pageX - canvas.offsetLeft - fixLeft
-        point.y = event.pageY - canvas.offsetTop  - 500
-    }, false)
-</script>
-          
-        
-      
-    </div>
 
-    
+        function onWindowResize() {
+            console.log('窗口大小变化')
+            camera.aspect = window.innerWidth / window.innerHeight; // 重设横纵比
+            // 修改PerspectiveCamera实例的参数之后需要调用updateProjectionMatrix，更新相机投影矩阵
+			camera.updateProjectionMatrix(); 
+			renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+        function onDocumentMouseWheel() {
+			camera.position.z += event.deltaY;
+        }
+        function createSkyParticle () {
+            skyParticlesGeometry = new THREE.Geometry()
+			//初始变换点组
+			for (let i = 0; i < 10000; i++) {
+				var vertex = new THREE.Vector3(); // 创建点
+				vertex.x = 800 * Math.random() - 400;
+				vertex.y = 800 * Math.random() - 400;
+				vertex.z = 800 * Math.random() - 400;
+				skyParticlesGeometry.vertices.push(vertex);//几何体里面有个vertices变量，可以用来存放点
+                skyParticlesGeometry.colors.push(new THREE.Color(1, 1, 1));
+            }
+            let material = new THREE.PointsMaterial({
+                color: 0xffffff,
+                size: 1,
+                opacity: 0.6,
+                transparent: true,
+                blending: THREE.AdditiveBlending,
+                depthTest: false,
+                map: generateSprite()
+            })
+			skyParticles = new THREE.Points(skyParticlesGeometry, material);
+            scene.add(skyParticles);
+        }
+        function updateSkyParticle() {
+            skyParticlesGeometry.rotateX(-(Math.PI / 1000))
+        }
+        function init () {
+            window.addEventListener('resize', onWindowResize, false)
+            document.addEventListener("mousewheel", onDocumentMouseWheel, false)
+            document.addEventListener("keydown", onDocumentKeyDown, false);
+        }
+        async  function loadObject() {
+            let OBJloader = new THREE.OBJLoader()
+            await OBJloader.load('./3d-obj/cat.obj', (loadedMesh) => {
+                let loadGeometry = loadedMesh.children[0].geometry.attributes.position
+                let geometry = new THREE.Geometry()
+                console.log('loadGeometry.count',loadGeometry.count)
+                for (let i = 0; i < loadGeometry.count; i++) {
+                    let vertex = new THREE.Vector3(); // 创建点
+                    vertex.x = loadGeometry.getX(i) / 5
+                    vertex.y = loadGeometry.getY(i) / 5
+                    vertex.z = loadGeometry.getZ(i) / 5
+                    geometry.vertices.push(vertex);//几何体里面有个vertices变量，可以用来存放点
+                    geometry.colors.push(new THREE.Color(1, 1, 1));
+                }
+                geometry.center()
+                geometry.scale(2, 2, 2)
 
-    
-    
-    
+                // let material = new THREE.PointsMaterial({
+                //     color: 0xffffff,
+                //     size: 1,
+                //     opacity: 0.6,
+                //     transparent: true,
+                //     blending: THREE.AdditiveBlending,
+                //     depthTest: false,
+                //     map: generateSprite()
+                // })
+                glist.push(geometry)
+                // let mesh = new THREE.Points(geometry, material)
+                // scene.add(mesh);
+            }) 
+            await OBJloader.load('./3d-obj/pig.obj', (loadedMesh) => {
+                let loadGeometry = loadedMesh.children[0].geometry.attributes.position
+                let geometry = new THREE.Geometry()
+                console.log('loadGeometry.count',loadGeometry.count)
+                for (let i = 0; i < loadGeometry.count; i+=15) {
+                    let vertex = new THREE.Vector3(); // 创建点
+                    vertex.x = loadGeometry.getX(i) / 5
+                    vertex.y = loadGeometry.getY(i) / 5
+                    vertex.z = loadGeometry.getZ(i) / 5
+                    geometry.vertices.push(vertex);//几何体里面有个vertices变量，可以用来存放点
+                    geometry.colors.push(new THREE.Color(1, 1, 1));
+                }
+                geometry.center()
+                console.log('geometry',geometry)
+                geometry.scale(1000, 1000, 1000)
+                geometry.rotateX(Math.PI/2)
+                geometry.rotateY(Math.PI - Math.PI/2 + Math.PI/6)
+                geometry.rotateZ(Math.PI)
+                // let material = new THREE.PointsMaterial({
+                //     color: 0xffffff,
+                //     size: 1,
+                //     opacity: 0.6,
+                //     transparent: true,
+                //     blending: THREE.AdditiveBlending,
+                //     depthTest: false,
+                //     map: generateSprite()
+                // })
+                glist.push(geometry)
+                // let mesh = new THREE.Points(geometry, material)
+                // scene.add(mesh);
+            }) 
+        }
 
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
-
-
-          </div>
-          
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">sumi Li</p>
-              <div class="site-description motion-element" itemprop="description"></div>
-          </div>
-
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
+        function tweenObj(index) {
+            // geometry为初始化时的粒子大于所有的obj中的模型的粒子数
+            console.log('glist',glist)
+            console.log('TWEEN',TWEEN)
+            console.log('skyParticlesGeometry',skyParticlesGeometry)
+            console.log('index',index)
+			skyParticlesGeometry.vertices.forEach(function (e, i, arr) {
+                // debugger
+                // 获取当前模型切换粒子的长度：初始index=0
+                var length = glist[index].vertices.length;
                 
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">5</span>
-                    <span class="site-state-item-name">posts</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  
-                    
-                      <a href="/categories/">
-                    
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">3</span>
-                    <span class="site-state-item-name">categories</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  
-                    
-                      <a href="/tags/">
-                    
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">4</span>
-                    <span class="site-state-item-name">tags</span>
-                  </a>
-                </div>
-              
-            </nav>
-          
-
-          
-
-          
-
-          
-
-          
-
-          
-          
-
-          
-            
-          
-          
-
-        </div>
-      </div>
-
-      
-
-      
-
-    </div>
-  </aside>
-  
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">sumi Li</span>
-
-  
-
-  
-</div>
-
-
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.1.1</div>
-
-
-
-
-        
-
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
-    
-
-    
-  </div>
-
-  
-
-<script>
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  <script src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-
-  
-
-
-  <script src="/js/utils.js?v=7.1.1"></script>
-
-  <script src="/js/motion.js?v=7.1.1"></script>
-
-
-
-  
-  
-
-
-  <script src="/js/schemes/muse.js?v=7.1.1"></script>
-
-
-
-  
-
-  
-
-
-  <script src="/js/next-boot.js?v=7.1.1"></script>
-
-
-  
-
-  
-
-  
-
-  
-
-
-
-  
-
-
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
+                // glist只记录粒子位置，不参与动画
+
+                // 关键：理解初始化的粒子数必须大于所有模型粒子数
+                // 当i 小于 length时， i % length = length * 0 + i
+                // 当i 大于 length时， i % length = length * xxx + 0，1，2 .... 所以又重头开始了
+                var o = glist[index].vertices[i % length];
+				new TWEEN.Tween(e).to({
+					x: o.x,
+					y: o.y,
+					z: o.z
+                }, 1000).easing(TWEEN.Easing.Exponential.In).delay(1000 * Math.random()).start();
+			})
+			camera.position.z = 200;
+        }
+        function onDocumentKeyDown(event) {
+			if (event.which == 40 && objIndex < 2) {
+				objIndex++;
+				tweenObj(objIndex);
+				flag = true;
+			} else if (event.which == 38 && objIndex > 0) {
+				objIndex--;
+				tweenObj(objIndex);
+				flag = true;
+			}
+		}
+        createSkyParticle()
+        loadObject()
+        init()
+        animate()
+
+
+        function animate(time) {
+			requestAnimationFrame(animate);
+            render();
+		}
+
+        function render() {
+            TWEEN.update()
+            skyParticlesGeometry.verticesNeedUpdate = true;
+			skyParticlesGeometry.colorsNeedUpdate = true;
+			renderer.render(scene, camera);
+        }
+
+    </script>
 </body>
 </html>
