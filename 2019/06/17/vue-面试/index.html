@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="vue 的data为什么要以函数返回关键切入点：    1、理解每个组件都是vue的实例    2、组件共享data属性，当data选项的值是同一个引用类型的值时，改变其中一个会影响其他 vue 的computed关键切入点：    1、如何建立与其他属性（如data,store）的联系，初始化时做了什么    2、为何属性改变后，计算属性可以重新计算    3、如何实现缓存讲明白这三个问题即可，">
+<meta name="keywords" content="面试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue-面试">
+<meta property="og:url" content="http://yoursite.com/2019/06/17/vue-面试/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="vue 的data为什么要以函数返回关键切入点：    1、理解每个组件都是vue的实例    2、组件共享data属性，当data选项的值是同一个引用类型的值时，改变其中一个会影响其他 vue 的computed关键切入点：    1、如何建立与其他属性（如data,store）的联系，初始化时做了什么    2、为何属性改变后，计算属性可以重新计算    3、如何实现缓存讲明白这三个问题即可，">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/.com//computed.jpeg">
+<meta property="og:updated_time" content="2019-06-18T23:27:56.192Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue-面试">
+<meta name="twitter:description" content="vue 的data为什么要以函数返回关键切入点：    1、理解每个组件都是vue的实例    2、组件共享data属性，当data选项的值是同一个引用类型的值时，改变其中一个会影响其他 vue 的computed关键切入点：    1、如何建立与其他属性（如data,store）的联系，初始化时做了什么    2、为何属性改变后，计算属性可以重新计算    3、如何实现缓存讲明白这三个问题即可，">
+<meta name="twitter:image" content="http://yoursite.com/.com//computed.jpeg">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019/06/17/vue-面试/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>vue-面试 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/17/vue-面试/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="sumi Li">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">vue-面试
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-06-17 16:18:26" itemprop="dateCreated datePublished" datetime="2019-06-17T16:18:26+08:00">2019-06-17</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-06-19 07:27:56" itemprop="dateModified" datetime="2019-06-19T07:27:56+08:00">2019-06-19</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/面试/" itemprop="url" rel="index"><span itemprop="name">面试</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="vue-的data为什么要以函数返回"><a href="#vue-的data为什么要以函数返回" class="headerlink" title="vue 的data为什么要以函数返回"></a>vue 的data为什么要以函数返回</h2><p><strong>关键切入点：</strong><br>    1、理解每个组件都是vue的实例<br>    2、组件共享data属性，当data选项的值是同一个引用类型的值时，改变其中一个会影响其他</p>
+<h2 id="vue-的computed"><a href="#vue-的computed" class="headerlink" title="vue 的computed"></a>vue 的computed</h2><p><strong>关键切入点：</strong><br>    1、如何建立与其他属性（如data,store）的联系，初始化时做了什么<br>    2、为何属性改变后，计算属性可以重新计算<br>    3、如何实现缓存<br>讲明白这三个问题即可，以下分步骤讨论<br><strong>实现步骤：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br></pre></td><td class="code"><pre><span class="line">// 代码片段解释：</span><br><span class="line"></span><br><span class="line">// computed初始化的Watcher传入lazy: true就会触发Watcher中的dirty值为true</span><br><span class="line">const computedWatcherOptions = &#123; lazy: true &#125;</span><br><span class="line"></span><br><span class="line">// 空函数</span><br><span class="line">const noop = ()=&gt;&#123;&#125;</span><br><span class="line"></span><br><span class="line">// Object.defineProperty.属性 = 默认值sharedPropertyDefinition</span><br><span class="line">const sharedPropertyDefinition = &#123;</span><br><span class="line">  enumerable: true,</span><br><span class="line">  configurable: true,</span><br><span class="line">  get: noop,</span><br><span class="line">  set: noop</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 代码正文:</span><br><span class="line">//🌼 1、Vue 实例初始化过程中，将所有计算属性包装为 lazy watcher</span><br><span class="line">function initComputed(vm:Component, computed: Object) &#123;</span><br><span class="line">    const watchers = vm._computedWatchers = Object.create(null)</span><br><span class="line">    for (const key in computed) &#123;</span><br><span class="line">        const userDef = computed[key]</span><br><span class="line">        const getter = typeof userDef === &apos;function&apos; ? userDef : userDef.get</span><br><span class="line">        watchers[key] = new Watch(</span><br><span class="line">            vm,</span><br><span class="line">            getter || noop，</span><br><span class="line">            noop, </span><br><span class="line">            computedWatcherOptions // lazy：生成lazy wacther</span><br><span class="line">        )</span><br><span class="line">        if (!(key in vm)) &#123;</span><br><span class="line">            // 用于创建属性 vm.someComputed，并将提供的函数将用作属性 vm.someComputed 的 getter</span><br><span class="line">            defineComputed(vm, key, userDef)</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            warn(already defined in data)...</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 2、把计算属性的key挂载到vm对象下，并使用Object.defineProperty进行处理</span><br><span class="line">function defineComputed(</span><br><span class="line">    target:any, // vm</span><br><span class="line">    key: string,</span><br><span class="line">    userDef: Object | Function </span><br><span class="line">) &#123;</span><br><span class="line">    if (typeof userDef === &apos;function&apos;) &#123;</span><br><span class="line">        sharedPropertyDefinition.get = this.createComputedGetter(key) // key计算属性【函数名】</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        sharedPropertyDefinition.get = userDef.get</span><br><span class="line">	      ? (userDef.cache !== false</span><br><span class="line">	        ? this.createComputedGetter(key)</span><br><span class="line">	        : userDef.get)</span><br><span class="line">	      : noop</span><br><span class="line">        // 如果有设置set方法则直接使用，否则赋值空函数</span><br><span class="line">	    sharedPropertyDefinition.set = userDef.set ? userDef.set : noop</span><br><span class="line">    &#125;</span><br><span class="line">    // 创建属性 vm.someComputed，并初始化getter setter</span><br><span class="line">    Object.defineProperty(target, key, sharedPropertyDefinition)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 重新复制计算属性的getter</span><br><span class="line">function createComputedGetter(key) &#123;</span><br><span class="line">    return function computedGetter () &#123;</span><br><span class="line">        // 计算开始之前，此 watcher 将被设置为依赖目标，开始依赖收集(相关代码)；</span><br><span class="line">        🌼🌼 const watcher = this._computedWatchers &amp;&amp; this._computedWatchers[key]</span><br><span class="line"></span><br><span class="line">        // watcher.dirty 参数决定了计算属性值是否需要重新计算，默认值为true，即第一次时会调用一次</span><br><span class="line">        if (watcher) &#123;</span><br><span class="line">            // 首次访问时，watcher为dirty=ture，此时开始计算此watcher的值</span><br><span class="line">            if (watcher.dirty) &#123;</span><br><span class="line">                // 每次执行之后watcher.dirty会设置为false，只有依赖的data值改变时才会触发</span><br><span class="line">                🌼🌼🌼watcher.evaluate() </span><br><span class="line">            &#125;</span><br><span class="line">            // 同步data的defineProperty中get函数中 判断是否处于依赖收集状态</span><br><span class="line">            if (Dep.target) &#123;</span><br><span class="line">                watcher.depend() </span><br><span class="line">            &#125;</span><br><span class="line">            //  返回计算属性的值[get()]</span><br><span class="line">            reutrn watcher.value</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 计算 This only gets called for lazy watchers.</span><br><span class="line">️evaluate () &#123;</span><br><span class="line">    // 计算 watcher 值的过程中，被访问到属性的 getter 中会是检查是否存在依赖目标，若存在依赖目标就创建依赖关系</span><br><span class="line">    // watcher 的值计算完成后，新的依赖将被设置，旧的依赖会被删除，依赖收集完成。</span><br><span class="line">    this.value = this.get() </span><br><span class="line">    this.dirty = false</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 当通过 vm.someComputed 获取计算属性时，就会进到这个 getter 方法</span><br><span class="line">get () &#123;</span><br><span class="line">    // 将当前  computed属性的watcher 实例暂存到 Dep.target，这就表示开启了依赖收集任务</span><br><span class="line">    pushTarget(this)</span><br><span class="line"></span><br><span class="line">    // this.getter.call(vm, vm) -&gt; data.name -&gt; 触发数据get劫持 ,上一步把computed属性的watcher挂到了Dep类上,此时【Dep.target=true;Dep.targe = computed的watcher  】</span><br><span class="line">    // 所以data.name的dep也把fullname的watcher放进去了~~ </span><br><span class="line">    // data和计算属性放在同一个dep的subs里面，两者建立起了依赖</span><br><span class="line">    🌼🌼🌼🌼this.getter.call(vm, vm)</span><br><span class="line"></span><br><span class="line">    // watcher 的值计算完成后，新的依赖将被设置，旧的依赖会被删除，依赖收集完成。</span><br><span class="line">    🌼🌼🌼🌼🌼popTarget()</span><br><span class="line">    this.cleanupDeps()</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 更新   observer/watcher.js</span><br><span class="line">update () &#123;</span><br><span class="line">    /* istanbul ignore else */</span><br><span class="line">    data更新时</span><br><span class="line">    if (this.lazy) &#123;</span><br><span class="line">      🌼🌼🌼🌼🌼🌼this.dirty = true</span><br><span class="line">    &#125; else if (this.sync) &#123;</span><br><span class="line">      this.run()</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      queueWatcher(this)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 收集依赖 observer/watcher.js</span><br><span class="line">depend () &#123;</span><br><span class="line">    if (Dep.target) &#123;</span><br><span class="line">        Dep.target.addDep(this)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>总结：</strong><br><img src="/.com//computed.jpeg"></p>
+<pre><code>1、🌼Vue初始化过程中，遍历所有计算属性包装成lazy watcher,并在内部实例化一个Dep，用于收集依赖。
+2、🌼🌼定义计算[将默认的get重新设置]属性开始之前，此 watcher 将被设置为依赖目标，开始依赖收集(相关代码)；
+3、🌼🌼🌼首次访问时，watcher为dirty=ture[默认]，此时计算watcher的值
+4、🌼🌼🌼🌼计算 watcher 值的过程中，被访问到属性的 getter 中会是检查是否存在依赖目标Dep.target，若存在依赖目标就创建依赖关系
+5、🌼🌼🌼🌼🌼watcher 的值计算完成后，新的依赖将被设置，旧的依赖会被删除，依赖收集完成。 
+6、🌼🌼🌼🌼🌼🌼当依赖属性更新时，会通知自身的依赖目标，watcher 被设置为 dirty
+7、再次访问该计算属性，重复计算及依赖收集步骤(3-6)
+</code></pre><p><strong>参考</strong><br><a href="https://juejin.im/post/5afbfce56fb9a07ac0226f21#heading-6" target="_blank" rel="noopener">https://juejin.im/post/5afbfce56fb9a07ac0226f21#heading-6</a><br><a href="https://segmentfault.com/a/1190000010408657" target="_blank" rel="noopener">https://segmentfault.com/a/1190000010408657</a></p>
+<h2 id="vue-computed-和-watch-的区别："><a href="#vue-computed-和-watch-的区别：" class="headerlink" title="vue  computed 和 watch 的区别："></a>vue  computed 和 watch 的区别：</h2><p><strong>从应用场景</strong></p>
+<ul>
+<li>computed<br>  只要应用场景是代替模板内的表达式或者data值得任何负责逻辑计算，</li>
+<li>watch<br><strong>从适用场景</strong><br>重点：computed和data走的是两套不同的响应式系统</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/面试/" rel="tag"># 面试</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/13/vue-模板相关/" rel="next" title="vue-模板相关">
+                <i class="fa fa-chevron-left"></i> vue-模板相关
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/18/http-面试/" rel="prev" title="http-面试">
+                http-面试 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">sumi Li</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#vue-的data为什么要以函数返回"><span class="nav-number">1.</span> <span class="nav-text">vue 的data为什么要以函数返回</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vue-的computed"><span class="nav-number">2.</span> <span class="nav-text">vue 的computed</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vue-computed-和-watch-的区别："><span class="nav-number">3.</span> <span class="nav-text">vue  computed 和 watch 的区别：</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">sumi Li</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.1"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

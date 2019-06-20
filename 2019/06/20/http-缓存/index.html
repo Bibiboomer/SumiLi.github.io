@@ -96,18 +96,21 @@
 
 
 
-  <meta name="description" content="js判断数据类型的方法 貌似有两家公司问到，大概说了下typeof、instanceof、constructor、prototype等判断方式，注意事项以及优缺点。应该回答的还可以  JavaScript闭包 【重点】关键：    1、常用的场景    2、结合es6深入作用域    3、单例模式 JavaScript继承 【重点】这个我之前也总结过相关文章，网易的一面第二个面试官问了，我大概从原">
-<meta name="keywords" content="js,面试">
+  <meta name="description" content="前言首先需要先理解什么是缓存？缓存是浏览器对之前请求过的文件进行缓存，以便下一次访问时重复使用，用于提高访问速度，缩短网页请求资源的距离，减少延迟，并且由于缓存可以重复利用，还可以减少带宽，降低网络负荷。 按照缓存位置分类，可以分为四种    Service Worker    Memory Cache    Disk Cache    网络请求 对于Service Worker，用于实现PWA页">
+<meta name="keywords" content="http,缓存">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JS">
-<meta property="og:url" content="http://yoursite.com/2019/06/12/JS/index.html">
+<meta property="og:title" content="http-缓存">
+<meta property="og:url" content="http://yoursite.com/2019/06/20/http-缓存/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="js判断数据类型的方法 貌似有两家公司问到，大概说了下typeof、instanceof、constructor、prototype等判断方式，注意事项以及优缺点。应该回答的还可以  JavaScript闭包 【重点】关键：    1、常用的场景    2、结合es6深入作用域    3、单例模式 JavaScript继承 【重点】这个我之前也总结过相关文章，网易的一面第二个面试官问了，我大概从原">
+<meta property="og:description" content="前言首先需要先理解什么是缓存？缓存是浏览器对之前请求过的文件进行缓存，以便下一次访问时重复使用，用于提高访问速度，缩短网页请求资源的距离，减少延迟，并且由于缓存可以重复利用，还可以减少带宽，降低网络负荷。 按照缓存位置分类，可以分为四种    Service Worker    Memory Cache    Disk Cache    网络请求 对于Service Worker，用于实现PWA页">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-18T23:28:05.284Z">
+<meta property="og:image" content="http://yoursite.com/2019/06/20/http-缓存/http-缓存/one.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/06/20/http-缓存/http-缓存/two.jpg">
+<meta property="og:updated_time" content="2019-06-20T11:58:39.343Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JS">
-<meta name="twitter:description" content="js判断数据类型的方法 貌似有两家公司问到，大概说了下typeof、instanceof、constructor、prototype等判断方式，注意事项以及优缺点。应该回答的还可以  JavaScript闭包 【重点】关键：    1、常用的场景    2、结合es6深入作用域    3、单例模式 JavaScript继承 【重点】这个我之前也总结过相关文章，网易的一面第二个面试官问了，我大概从原">
+<meta name="twitter:title" content="http-缓存">
+<meta name="twitter:description" content="前言首先需要先理解什么是缓存？缓存是浏览器对之前请求过的文件进行缓存，以便下一次访问时重复使用，用于提高访问速度，缩短网页请求资源的距离，减少延迟，并且由于缓存可以重复利用，还可以减少带宽，降低网络负荷。 按照缓存位置分类，可以分为四种    Service Worker    Memory Cache    Disk Cache    网络请求 对于Service Worker，用于实现PWA页">
+<meta name="twitter:image" content="http://yoursite.com/2019/06/20/http-缓存/http-缓存/one.jpg">
 
 
 
@@ -115,7 +118,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/06/12/JS/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/20/http-缓存/">
 
 
 
@@ -125,7 +128,7 @@
   };
 </script>
 
-  <title>JS | Hexo</title>
+  <title>http-缓存 | Hexo</title>
   
 
 
@@ -341,7 +344,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/12/JS/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/20/http-缓存/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="sumi Li">
@@ -358,7 +361,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JS
+          <h1 class="post-title" itemprop="name headline">http-缓存
 
               
             
@@ -384,24 +387,12 @@
                 
               
 
-              <time title="Created: 2019-06-12 15:35:26" itemprop="dateCreated datePublished" datetime="2019-06-12T15:35:26+08:00">2019-06-12</time>
+              <time title="Created: 2019-06-20 14:36:15 / Modified: 19:58:39" itemprop="dateCreated datePublished" datetime="2019-06-20T14:36:15+08:00">2019-06-20</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-06-19 07:28:05" itemprop="dateModified" datetime="2019-06-19T07:28:05+08:00">2019-06-19</time>
               
             
           </span>
@@ -418,7 +409,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JS/" itemprop="url" rel="index"><span itemprop="name">JS</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/http/" itemprop="url" rel="index"><span itemprop="name">http</span></a></span>
 
                 
                 
@@ -453,14 +444,60 @@
       
 
       
-        <h2 id="js判断数据类型的方法"><a href="#js判断数据类型的方法" class="headerlink" title="js判断数据类型的方法"></a>js判断数据类型的方法</h2><blockquote>
-<p>貌似有两家公司问到，大概说了下typeof、instanceof、constructor、prototype等判断方式，注意事项以及优缺点。应该回答的还可以</p>
-</blockquote>
-<h2 id="JavaScript闭包-【重点】"><a href="#JavaScript闭包-【重点】" class="headerlink" title="JavaScript闭包 【重点】"></a>JavaScript闭包 【重点】</h2><p><strong>关键：</strong><br>    1、常用的场景<br>    2、结合es6深入作用域<br>    3、单例模式</p>
-<h2 id="JavaScript继承-【重点】"><a href="#JavaScript继承-【重点】" class="headerlink" title="JavaScript继承 【重点】"></a>JavaScript继承 【重点】</h2><p><strong><em>这个我之前也总结过相关文章，网易的一面第二个面试官问了，我大概从原型继承、构造函数继承、组合继承、寄生组合继承优缺点和实现方式都说了下，还有es6的实现方式。一般这样就回答差不多了。后来网易还接着问，es5如何实现super关键字。看过babel转换后代码，但是这个。。真的忘记看了。大概说了下自己的实现思路，也就是装饰着模式</em></strong></p>
-<h2 id="JavaScript的节流和防抖【重点】"><a href="#JavaScript的节流和防抖【重点】" class="headerlink" title="JavaScript的节流和防抖【重点】"></a>JavaScript的节流和防抖【重点】</h2><p><strong>结合业务场景</strong></p>
-<h2 id="前端跨域-【重点】"><a href="#前端跨域-【重点】" class="headerlink" title="前端跨域 【重点】"></a>前端跨域 【重点】</h2><p><strong>结合业务场景</strong></p>
-<h2 id="es6的新特性，深入分析-【重点】"><a href="#es6的新特性，深入分析-【重点】" class="headerlink" title="es6的新特性，深入分析 【重点】"></a>es6的新特性，深入分析 【重点】</h2><h2 id="深拷贝和浅拷贝"><a href="#深拷贝和浅拷贝" class="headerlink" title="深拷贝和浅拷贝"></a>深拷贝和浅拷贝</h2>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>首先需要先理解什么是缓存？缓存是浏览器对之前请求过的文件进行缓存，以便下一次访问时重复使用，用于提高访问速度，缩短网页请求资源的距离，减少延迟，并且由于缓存可以重复利用，还可以减少带宽，降低网络负荷。</p>
+<p>按照缓存位置分类，可以分为四种<br>    Service Worker<br>    Memory Cache<br>    Disk Cache<br>    网络请求</p>
+<p>对于<strong>Service Worker</strong>，用于实现PWA页面的技术，可以把它理解为特殊的web worker，可以控制管理缓存内容，且是永久缓存的，除非调用cache.delete或者容量超过限制。这里暂时不多做了解。</p>
+<p>关于<strong>Memory Cache</strong>，几乎所有的网络请求资源都会被浏览器自动加入memory cache。由于数量很大但是浏览器占用的内存不能无限扩大这两个因素，它属于短期存储。<br><strong>需要注意的是</strong>：从memory cache获取的缓存内容时，会忽视max-age=0，no-cache等头部设置。除非使用no-store这个头部配置。</p>
+<p>对于<strong>disk cache</strong>即http cache，即存储在硬盘上的缓存，是持久村粗，是实际存储于文件系统的。它会严格根据http头信息的各类字段来判断资源是否缓存、<br>是否可用、是否需要重新请求。当命中缓存之后，浏览器便会从硬盘中读取资源，绝大部分缓存来自disk cache，因此我们常管理的也是这部分的缓存。</p>
+<p>memory cache 是浏览器为了加快读取缓存速度而进行的自身的优化行为，不受开发者控制，也不受 HTTP 协议头的约束，算是一个黑盒。一般来说，我们真正可控制管理的较为熟悉的是disk cache。根据失效策略，分为强制缓存和协商(对比)缓存。</p>
+<ul>
+<li><p>强制缓存<br>  当客户端请求后，先访问缓存数据库查看缓存是否存在。如果存在则直接返回，不存在则发送请求，响应后再写入缓存数据库。</p>
+<ul>
+<li>它直接减少请求数，是提升最大的缓存策略，</li>
+<li><p>相关头部设置<br>  Expires：http1.0的字段，表示缓存到期时间，是一个绝对的时间，有缺点</p>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Expires: Thu, 10 Nov 2017 08:45:11 GMT</span><br></pre></td></tr></table></figure>
+</code></pre><p>  Cache-control：http1.1，表示资源缓存的最大有效时间，是相对时间</p>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Cache-control: max-age=2592000</span><br><span class="line">must-revalidate：如果超过了 max-age 的时间，浏览器必须向服务器发送请求，验证资源是否还有效</span><br><span class="line">no-cache：虽然字面意思是“不要缓存”，但实际上还是要求客户端缓存内容的，只是是否使用这个内容由后续的对比来决定。</span><br><span class="line">no-store: 真正意义上的“不要缓存”。所有内容都不走缓存，包括强制和对比。</span><br><span class="line">public：所有的内容都可以被缓存 (包括客户端和代理服务器， 如 CDN)</span><br><span class="line">private：所有的内容只有客户端才可以缓存，代理服务器不能缓存。默认值。</span><br></pre></td></tr></table></figure>
+</code></pre></li>
+</ul>
+</li>
+<li><p>协商缓存<br>  当强制缓存失效(超过规定时间)时，就需要使用对比缓存，由服务器决定缓存内容是否失效。对比缓存在请求数上和无缓存是一致的。但是如果返回304的话，仅返回状态码，减小了响应体积。</p>
+<ul>
+<li>流程<br>  1、浏览器请求缓存数据库，返回缓存标识<br>  2、浏览器获取标识再次发送请求<br>  3、若返回304，即文件为更新，缓存未失效，浏览器继续使用缓存<br>  4、若失效，则返回新的数据和缓存规则，再次写入缓存数据库</li>
+<li><p>相关设置<br>  一组：<br>  Last-Modified： 最后一次更新,服务端返回</p>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Last-Modified: Mon, 10 Nov 2018 09:10:11 GMT</span><br></pre></td></tr></table></figure>
+</code></pre><p>  If-Modified-Since：客户端请求时带上</p>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">If-Modified-Since: 获取相同资源时，上一次请求服务端返回的Last-Modified的值写入客户端请求时带上的这个字段</span><br></pre></td></tr></table></figure>
+</code></pre><p>  服务器判断 If-Modified-Since 是否等于 Last-Modified，是则表示未修改，返回304；反之则修改了，响应200状态码，并返回数据。<br>  有缺陷：</p>
+<pre><code>如果资源更新的速度是秒以下单位，那么该缓存是不能被使用的，因为它的时间单位最低是秒。如果资源更新的速度是秒以下单位，那么该缓存是不能被使用的，因为它的时间单位最低是秒。
+如果文件是通过服务器动态生成的，那么该方法的更新时间永远是生成的时间，尽管文件可能没有变化，所以起不到缓存的作用。
+</code></pre><p>  二组：<br>  Etag：Etag是属于HTTP 1.1属性，它是由服务器（Apache或者其他工具）生成返回给前端，用来帮助服务器控制Web端的缓存验证。Apache中，ETag的值，默认是对文件的索引节（INode），大小（Size）和最后修改时间（MTime）进行Hash后得到的。<br>  If-None-Match：<br>  这个一组的流程是一样的</p>
+</li>
+<li>总结： Etag的优先级高于Last-Modified</li>
+</ul>
+</li>
+<li>区别和共同点<br>  两者的共同点是，都是从客户端缓存中读取资源；区别是强缓存不会发请求，协商缓存会发请求。</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><pre><code>当浏览器要请求资源时：
+    1、调用 Service Worker 的 fetch 事件响应 
+    2、查看 memory cache
+    3、查看 disk cache。这里又细分
+        如果有强制缓存且未失效，则使用强制缓存，不请求服务器。这时的状态码全部是 200
+        如果有强制缓存但已失效，使用对比缓存，比较后确定 304 还是 200
+    4、发送网络请求，等待网络响应
+    5、把响应内容存入 disk cache (如果 HTTP 头信息配置可以存的话)
+    6、把响应内容 的引用 存入 memory cache (无视 HTTP 头信息的配置)
+    7、把响应内容存入 Service Worker 的 Cache Storage
+
+浏览器是如何判断是否使用缓存
+第一次请求资源时：
+</code></pre><p> <img src="./http-缓存/one.jpg"><br>    第二次请求资源时：<br><img src="./http-缓存/two.jpg"></p>
+<h2 id="结合业务场景选择合适的缓存策略"><a href="#结合业务场景选择合适的缓存策略" class="headerlink" title="结合业务场景选择合适的缓存策略"></a>结合业务场景选择合适的缓存策略</h2><pre><code>对于某些不需要缓存的资源，可以使用 Cache-control: no-store ，表示该资源不需要缓存
+对于频繁变动的资源，可以使用 Cache-Control: no-cache 并配合 ETag 使用，表示该资源已被缓存，但是每次都会发送请求询问资源是否更新。
+对于代码文件来说，通常使用 Cache-Control: max-age=31536000 并配合策略缓存使用，然后对文件进行指纹处理，一旦文件名变动就会立刻下载新的文件。
+</code></pre><p>场景分析：每次用户进入控制台时，若文档更新，则高亮显示入口，当用户点击入口，在后续的文档更新周期内，入口都不在显示高亮<br>文档更新周期:正常2周，但是不是确定</p>
+<p>参考<br><a href="https://juejin.im/post/5b9346dcf265da0aac6fbe57" target="_blank" rel="noopener">https://juejin.im/post/5b9346dcf265da0aac6fbe57</a><br><a href="https://zhuanlan.zhihu.com/p/44789005" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/44789005</a><br><a href="https://juejin.im/post/5c6c9c99f265da2d896326ae#heading-28" target="_blank" rel="noopener">https://juejin.im/post/5c6c9c99f265da2d896326ae#heading-28</a></p>
+
       
     </div>
 
@@ -483,9 +520,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/js/" rel="tag"># js</a>
+            <a href="/tags/http/" rel="tag"># http</a>
           
-            <a href="/tags/面试/" rel="tag"># 面试</a>
+            <a href="/tags/缓存/" rel="tag"># 缓存</a>
           
         </div>
       
@@ -498,8 +535,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/04/vue-基础概念/" rel="next" title="vue-基础概念">
-                <i class="fa fa-chevron-left"></i> vue-基础概念
+              <a href="/2019/06/19/htmlCss-面试/" rel="next" title="htmlCss-面试">
+                <i class="fa fa-chevron-left"></i> htmlCss-面试
               </a>
             
           </div>
@@ -507,10 +544,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/13/vue-模板相关/" rel="prev" title="vue-模板相关">
-                vue-模板相关 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -675,7 +708,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#js判断数据类型的方法"><span class="nav-number">1.</span> <span class="nav-text">js判断数据类型的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript闭包-【重点】"><span class="nav-number">2.</span> <span class="nav-text">JavaScript闭包 【重点】</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript继承-【重点】"><span class="nav-number">3.</span> <span class="nav-text">JavaScript继承 【重点】</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript的节流和防抖【重点】"><span class="nav-number">4.</span> <span class="nav-text">JavaScript的节流和防抖【重点】</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前端跨域-【重点】"><span class="nav-number">5.</span> <span class="nav-text">前端跨域 【重点】</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#es6的新特性，深入分析-【重点】"><span class="nav-number">6.</span> <span class="nav-text">es6的新特性，深入分析 【重点】</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#深拷贝和浅拷贝"><span class="nav-number">7.</span> <span class="nav-text">深拷贝和浅拷贝</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结合业务场景选择合适的缓存策略"><span class="nav-number">3.</span> <span class="nav-text">结合业务场景选择合适的缓存策略</span></a></li></ol></div>
             
 
           </div>
